@@ -5,10 +5,10 @@
 
 [node name="Node2D" type="Node2D"]
 
+[node name="TileMap" parent="." instance=ExtResource("1_s360k")]
+
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_gi58w")]
 y_sort_enabled = true
-position = Vector2(433, 221)
+position = Vector2(414, 241)
 scale = Vector2(0.160002, 0.160002)
 floor_stop_on_slope = false
-
-[node name="TileMap" parent="." instance=ExtResource("1_s360k")]

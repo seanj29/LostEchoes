@@ -14,6 +14,6 @@ func _physics_process(delta):
 	if direction:
 		velocity = direction * SPEED
 	else:
-		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+		velocity = Vector2.ZERO
 
 	move_and_slide()

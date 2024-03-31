@@ -9,6 +9,6 @@
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_gi58w")]
 y_sort_enabled = true
-position = Vector2(414, 241)
+position = Vector2(421, 249)
 scale = Vector2(0.160002, 0.160002)
 floor_stop_on_slope = false

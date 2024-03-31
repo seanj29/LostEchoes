@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b53nmxviarnwm"]
+[gd_scene load_steps=4 format=3 uid="uid://b53nmxviarnwm"]
 
 [ext_resource type="PackedScene" uid="uid://d23ekacfj8t3e" path="res://Scenes/TileMap1.tscn" id="1_s360k"]
 [ext_resource type="PackedScene" uid="uid://ytlk7kin8xrn" path="res://Scenes/PlayerCharacter.tscn" id="2_gi58w"]
+[ext_resource type="PackedScene" uid="uid://c5u1ux0sy1bwg" path="res://Scenes/Ghosts.tscn" id="3_a4wib"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -12,3 +13,7 @@ y_sort_enabled = true
 position = Vector2(421, 249)
 scale = Vector2(0.160002, 0.160002)
 floor_stop_on_slope = false
+
+[node name="MainGhost" parent="." instance=ExtResource("3_a4wib")]
+position = Vector2(389, 287)
+scale = Vector2(0.16, 0.16)

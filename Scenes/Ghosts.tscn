@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5u1ux0sy1bwg"]
+
+[ext_resource type="Texture2D" uid="uid://j4f5cl4bpktj" path="res://icon.svg" id="1_24kng"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y8jaq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_24kng")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MainGhost" type="AnimatedSprite2D"]
+modulate = Color(1, 1, 1, 0.572549)
+sprite_frames = SubResource("SpriteFrames_y8jaq")

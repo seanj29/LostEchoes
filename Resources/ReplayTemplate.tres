@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ReplayGhost" load_steps=2 format=3 uid="uid://b7rla6v1ud2w8"]
+
+[ext_resource type="Script" path="res://Scripts/RepalysScript.gd" id="1_ddyo6"]
+
+[resource]
+script = ExtResource("1_ddyo6")
+Replay = {}

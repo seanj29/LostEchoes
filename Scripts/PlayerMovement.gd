@@ -1,11 +1,33 @@
 extends CharacterBody2D
 
+@onready var TopNode := get_node("/root/Level")
+
 
 @export var SPEED = 300.0
 @export var FRICTION = 1500.00
+@export var ReplayResource: ReplayGhost
 
-var ReplayTest: Dictionary = {}
+#  All instances of res:// in filename will be changed to user:// pre production
+"""
+Using this multiline string to stop the weirdness with links above
+
+"""
+
+var ReplayDict: Dictionary
 var ActionArray: Array[String] = ["Up", "Down", "Left", "Right", "Special"] # Cam't use InputMap.get_actions() here as the array it produces it too large, would need to weight up preformance vs code readability.
+
+func _ready():
+	
+	ReplayResource.level = TopNode.levelNumber
+
+	var ReplayLoaded := load_new("res://Resources/Ghosts/replay1.tres")
+	if ReplayLoaded:
+		ReplayDict = ReplayLoaded.Replay
+		print("resource loaded")
+	else:
+		ReplayDict = ReplayResource.Replay
+		print("Resource not found")
+
 
 func _physics_process(_delta):
 
@@ -37,36 +59,48 @@ func _unhandled_key_input(event: InputEvent):
 		)
 		
 	if not actionsThisFrame.is_empty():
-		if !ReplayTest.has(Frame):
-			ReplayTest[Frame] = actionsThisFrame
+		if !ReplayDict.has(Frame):
+			ReplayDict[Frame] = actionsThisFrame
 		else:
-			ReplayTest[Frame].append_array(actionsThisFrame)
+			ReplayDict[Frame].append_array(actionsThisFrame)
 
 
 
 	# if event.is_action_pressed("Up"):
-	# 	if !ReplayTest.has(Frame):
-	# 		ReplayTest[Frame] = ["Up"]
+	# 	if !ReplayDict.has(Frame):
+	# 		ReplayDict[Frame] = ["Up"]
 	# 	else:
-	# 		ReplayTest[Frame].append("Up")
+	# 		ReplayDict[Frame].append("Up")
 	# if event.is_action_pressed("Down"):
-	# 	if !ReplayTest.has(Frame):
-	# 		ReplayTest[Frame] = ["Down"]
+	# 	if !ReplayDict.has(Frame):
+	# 		ReplayDict[Frame] = ["Down"]
 	# 	else:
-	# 		ReplayTest[Frame].append("Down")
+	# 		ReplayDict[Frame].append("Down")
 	# if event.is_action_pressed("Left"):
-	# 	if !ReplayTest.has(Frame):
-	# 		ReplayTest[Frame] = ["Left"]
+	# 	if !ReplayDict.has(Frame):
+	# 		ReplayDict[Frame] = ["Left"]
 	# 	else:
-	# 		ReplayTest[Frame].append("Left")
+	# 		ReplayDict[Frame].append("Left")
 	# if event.is_action_pressed("Right"):
-	# 	if !ReplayTest.has(Frame):
-	# 		ReplayTest[Frame] = ["Right"]
+	# 	if !ReplayDict.has(Frame):
+	# 		ReplayDict[Frame] = ["Right"]
 	# 	else:
-	# 		ReplayTest[Frame].append("Right")
+	# 		ReplayDict[Frame].append("Right")
 	
-	# for iFrame: int in ReplayTest.keys():
-	# 	print("Frame: %s	ActionArray %s" % [iFrame, ReplayTest[iFrame]])
+	# for iFrame: int in ReplayDict.keys():
+	# 	print("Frame: %s	ActionArray %s" % [iFrame, ReplayDict[iFrame]])
 	# print("\n")
 
+	if event.is_action_pressed("Save"):
+		save(ReplayResource, "res://Resources/Ghosts/replay1.tres")
 
+
+
+func save(resource: Resource, Path: String):
+	ResourceSaver.save(resource, Path)
+
+func load_new(Path: String) -> ReplayGhost:
+	if ResourceLoader.exists(Path, "ReplayGhost"):
+		return ResourceLoader.load(Path, "ReplayGhost")
+	else:
+		return null

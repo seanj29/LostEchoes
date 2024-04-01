@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b53nmxviarnwm"]
+[gd_scene load_steps=6 format=3 uid="uid://b53nmxviarnwm"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_8dsxi"]
 [ext_resource type="PackedScene" uid="uid://d23ekacfj8t3e" path="res://Scenes/TileMap1.tscn" id="1_s360k"]
 [ext_resource type="PackedScene" uid="uid://ytlk7kin8xrn" path="res://Scenes/PlayerCharacter.tscn" id="2_gi58w"]
 [ext_resource type="PackedScene" uid="uid://c5u1ux0sy1bwg" path="res://Scenes/Ghosts.tscn" id="3_a4wib"]
+[ext_resource type="Resource" uid="uid://b7rla6v1ud2w8" path="res://Resources/ReplayTemplate.tres" id="4_tak1t"]
 
-[node name="Node2D" type="Node2D" node_paths=PackedStringArray("MainChar")]
+[node name="Level" type="Node2D"]
 script = ExtResource("1_8dsxi")
-MainChar = NodePath("PlayerCharacter")
+levelNumber = null
 
 [node name="TileMap" parent="." instance=ExtResource("1_s360k")]
 
@@ -16,6 +17,7 @@ y_sort_enabled = true
 position = Vector2(421, 249)
 scale = Vector2(0.160002, 0.160002)
 floor_stop_on_slope = false
+ReplayResource = ExtResource("4_tak1t")
 
 [node name="MainGhost" parent="." instance=ExtResource("3_a4wib")]
 position = Vector2(389, 287)

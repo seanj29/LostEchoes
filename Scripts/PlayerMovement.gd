@@ -65,17 +65,8 @@ func _unhandled_key_input(event: InputEvent):
 	# 	else:
 	# 		ReplayTest[Frame].append("Right")
 	
-	for iFrame: int in ReplayTest.keys():
-		print("Frame: %s	ActionArray %s" % [iFrame, ReplayTest[iFrame]])
-	print("\n")
+	# for iFrame: int in ReplayTest.keys():
+	# 	print("Frame: %s	ActionArray %s" % [iFrame, ReplayTest[iFrame]])
+	# print("\n")
 
 
-
-class ReplayFrame:
-
-	var FrameNumber: int
-	var ActionArr: Array[String]
-
-	func _init(Frame: int, Actions: Array[String]):
-		FrameNumber = Frame
-		ActionArr = Actions	

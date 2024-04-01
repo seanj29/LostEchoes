@@ -28,6 +28,7 @@ func _unhandled_key_input(event: InputEvent):
 		var FrameObject = ReplayFrame.new(Engine.get_physics_frames(), ["Move UP"])
 		ReplayTest.append(FrameObject)
 		print("FrameList:")
+		print(event.as_text())
 		for Frame in ReplayTest:
 			print("	Frame: %s 	Actions: %s"  % [Frame.FrameNumber, Frame.ActionArr])	
 

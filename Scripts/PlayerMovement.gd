@@ -17,8 +17,7 @@ var ActionArray: Array[String] = ["Up", "Down", "Left", "Right", "Special"] # Ca
 
 func _ready():
 
-
-	var LoadedReplay: ReplayGhost = Level.load_new("user://Resources/Ghosts/replay1.tres")
+	var LoadedReplay: ReplayGhost = Level.load_new()
 	if LoadedReplay:
 		ReplayDict = LoadedReplay.Replay
 		print("PlayMovement.gd: resource loaded")
@@ -96,9 +95,9 @@ func _unhandled_key_input(event: InputEvent):
 	# print("\n")
 
 	if event.is_action_pressed("Save"):
-		Level.save(Level.ReplayResource, "user://Resources/Ghosts/replay1.tres")
+		Level.save(Level.ReplayResource)
 	if event.is_action_pressed("Delete"):
-		Level.delete("user://Resources/Ghosts/replay1.tres")
+		Level.delete()
 
 
 

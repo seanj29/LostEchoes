@@ -18,12 +18,16 @@ func save(resource: Resource):
 
 func load_new() -> ReplayGhost:
     if ResourceLoader.exists(PATH):
+        print("%s being loaded" % PATH)
         return ResourceLoader.load(PATH, "ReplayGhost")
     else:
         return null
 
 func delete ():
+    var global_path = ProjectSettings.globalize_path(PATH)
+    print("Attempting to delete %s" % global_path)
     if ResourceLoader.exists(PATH):
-        OS.move_to_trash(ProjectSettings.globalize_path(PATH))
+        OS.move_to_trash(global_path)
+        print("%s deleted" % global_path)
     else:
-        print("Could not find resource at path: %s" % PATH)
+        print("Could not find resource to delete at path: %s" % global_path)

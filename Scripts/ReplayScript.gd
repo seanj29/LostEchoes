@@ -7,6 +7,6 @@ extends Resource
 @export var Replay: Dictionary
 
 func _init(ReplayDict = {}, levelNo = 0):
-    level = levelNo
 
+    level = levelNo
     Replay = ReplayDict

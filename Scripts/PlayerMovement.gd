@@ -1,11 +1,10 @@
 extends CharacterBody2D
 
-@onready var TopNode := get_node("/root/Level")
+@onready var Level := get_node("/root/Level")
 
 
 @export var SPEED = 300.0
 @export var FRICTION = 1500.00
-@export var ReplayResource: ReplayGhost
 
 #  All instances of res:// in filename will be changed to user:// pre production
 """
@@ -17,15 +16,14 @@ var ReplayDict: Dictionary
 var ActionArray: Array[String] = ["Up", "Down", "Left", "Right", "Special"] # Cam't use InputMap.get_actions() here as the array it produces it too large, would need to weight up preformance vs code readability.
 
 func _ready():
-	
-	ReplayResource.level = TopNode.levelNumber
 
-	var ReplayLoaded := load_new("res://Resources/Ghosts/replay1.tres")
-	if ReplayLoaded:
-		ReplayDict = ReplayLoaded.Replay
+
+	var LoadedReplay: ReplayGhost = Level.load_new("res://Resources/Ghosts/replay1.tres")
+	if LoadedReplay:
+		ReplayDict = LoadedReplay.Replay
 		print("resource loaded")
 	else:
-		ReplayDict = ReplayResource.Replay
+		ReplayDict = Level.ReplayResource.Replay
 		print("Resource not found")
 
 
@@ -92,15 +90,7 @@ func _unhandled_key_input(event: InputEvent):
 	# print("\n")
 
 	if event.is_action_pressed("Save"):
-		save(ReplayResource, "res://Resources/Ghosts/replay1.tres")
+		Level.save(Level.ReplayResource, "res://Resources/Ghosts/replay1.tres")
 
 
 
-func save(resource: Resource, Path: String):
-	ResourceSaver.save(resource, Path)
-
-func load_new(Path: String) -> ReplayGhost:
-	if ResourceLoader.exists(Path, "ReplayGhost"):
-		return ResourceLoader.load(Path, "ReplayGhost")
-	else:
-		return null

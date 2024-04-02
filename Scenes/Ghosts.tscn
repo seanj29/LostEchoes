@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5u1ux0sy1bwg"]
+[gd_scene load_steps=4 format=3 uid="uid://c5u1ux0sy1bwg"]
 
 [ext_resource type="Texture2D" uid="uid://j4f5cl4bpktj" path="res://icon.svg" id="1_24kng"]
+[ext_resource type="Script" path="res://Scenes/GhostsMovement.gd" id="2_e18ss"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y8jaq"]
 animations = [{
@@ -16,3 +17,4 @@ animations = [{
 [node name="MainGhost" type="AnimatedSprite2D"]
 modulate = Color(1, 1, 1, 0.572549)
 sprite_frames = SubResource("SpriteFrames_y8jaq")
+script = ExtResource("2_e18ss")

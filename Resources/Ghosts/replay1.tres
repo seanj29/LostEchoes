@@ -1,17 +1,26 @@
 [gd_resource type="Resource" script_class="ReplayGhost" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://Scripts/ReplayScript.gd" id="1_dq88o"]
+[ext_resource type="Script" path="res://Scripts/ReplayScript.gd" id="1_mh62u"]
 
 [resource]
-script = ExtResource("1_dq88o")
+script = ExtResource("1_mh62u")
 level = 1
 Replay = {
-67: ["Up_pressed", ["x = ", 421.0], ["y = ", 249.0]],
-91: ["Up_released", ["x = ", 421.0], ["y = ", 129.0]],
-115: ["Down_pressed", ["x = ", 421.0], ["y = ", 129.0]],
-142: ["Down_released", ["x = ", 421.0], ["y = ", 264.0]],
-161: ["Right_pressed", ["x = ", 421.0], ["y = ", 264.0]],
-187: ["Right_released", ["x = ", 551.0], ["y = ", 264.0]],
-206: ["Left_pressed", ["x = ", 551.0], ["y = ", 264.0]],
-235: ["Left_released", ["x = ", 406.0], ["y = ", 264.0]]
+38: ["Right_pressed", ["x = ", 421.0], ["y = ", 249.0]],
+39: ["Up_pressed", ["x = ", 426.0], ["y = ", 249.0]],
+72: ["Up_released", ["x = ", 542.672], ["y = ", 132.327], "Right_released", ["x = ", 542.672], ["y = ", 132.327]],
+85: ["Left_pressed", ["x = ", 542.672], ["y = ", 132.327], "Down_pressed", ["x = ", 542.672], ["y = ", 132.327]],
+121: ["Left_released", ["x = ", 415.393], ["y = ", 259.607]],
+122: ["Down_released", ["x = ", 415.393], ["y = ", 264.607]],
+132: ["Right_pressed", ["x = ", 415.393], ["y = ", 264.607]],
+143: ["Down_pressed", ["x = ", 470.393], ["y = ", 264.607]],
+148: ["Down_released", ["x = ", 488.071], ["y = ", 282.284]],
+160: ["Up_pressed", ["x = ", 548.071], ["y = ", 282.284]],
+163: ["Right_released", ["x = ", 558.678], ["y = ", 271.678]],
+170: ["Left_pressed", ["x = ", 558.678], ["y = ", 236.678], "Up_released", ["x = ", 558.678], ["y = ", 236.678]],
+180: ["Down_pressed", ["x = ", 508.678], ["y = ", 236.678]],
+181: ["Left_released", ["x = ", 505.142], ["y = ", 240.213]],
+185: ["Left_pressed", ["x = ", 505.142], ["y = ", 260.213]],
+188: ["Down_released", ["x = ", 494.536], ["y = ", 270.82]],
+192: ["Left_released", ["x = ", 474.536], ["y = ", 270.82]]
 }

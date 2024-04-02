@@ -10,7 +10,7 @@ var currentFrame: int = 0
 var ActionsState := {Up_pressed = false, Down_pressed = false, Left_pressed = false, Right_pressed = false}
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var LoadedReplay: ReplayGhost = Level.load_new("res://Resources/Ghosts/replay1.tres")
+	var LoadedReplay: ReplayGhost = Level.load_new("user://Resources/Ghosts/replay1.tres")
 	if LoadedReplay:
 		ReplayDict = LoadedReplay.Replay
 		print("GhostMovement.gd: resource loaded")

@@ -16,3 +16,9 @@ func load_new(Path: String) -> ReplayGhost:
         return ResourceLoader.load(Path, "ReplayGhost")
     else:
         return null
+
+func delete (Path: String):
+    if ResourceLoader.exists(Path):
+        OS.move_to_trash(ProjectSettings.globalize_path(Path))
+    else:
+        print("Could not find resource at path: %s" % Path)

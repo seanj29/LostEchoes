@@ -21,10 +21,10 @@ func _ready():
 	var LoadedReplay: ReplayGhost = Level.load_new("res://Resources/Ghosts/replay1.tres")
 	if LoadedReplay:
 		ReplayDict = LoadedReplay.Replay
-		print("resource loaded")
+		print("PlayMovement.gd: resource loaded")
 	else:
 		ReplayDict = Level.ReplayResource.Replay
-		print("Resource not found")
+		print("PlayMovement.gd: Resource not found")
 
 
 func _physics_process(_delta):
@@ -41,22 +41,28 @@ func _physics_process(_delta):
 func _unhandled_key_input(event: InputEvent):
 	
 	var Frame := Engine.get_physics_frames()
-	var filteredArray := ActionArray.filter(
-		func(action:String) -> bool:
-		return event.is_action(action)
-	)
 
-	var actionsThisFrame := filteredArray.map(
+	var actionsMap := ActionArray.map(
 		func(action: String): 
 		if event.is_action_pressed(action):
 			return "%s_pressed" % action
 		elif event.is_action_released(action):
 			return "%s_released" % action
 		else:
-			return action
+			return
 		)
+
+	var actionsThisFrame := actionsMap.filter(
+		func(action) -> bool:
+		return action != null
+	)
+
 		
 	if not actionsThisFrame.is_empty():
+		var currentX = position.x
+		var currentY = position.y
+		actionsThisFrame.append(["x = ",currentX])	
+		actionsThisFrame.append(["y = ",currentY])
 		if !ReplayDict.has(Frame):
 			ReplayDict[Frame] = actionsThisFrame
 		else:

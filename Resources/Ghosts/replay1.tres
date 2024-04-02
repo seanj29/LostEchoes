@@ -1,23 +1,17 @@
 [gd_resource type="Resource" script_class="ReplayGhost" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://Scripts/ReplayScript.gd" id="1_akgo2"]
+[ext_resource type="Script" path="res://Scripts/ReplayScript.gd" id="1_dq88o"]
 
 [resource]
-script = ExtResource("1_akgo2")
+script = ExtResource("1_dq88o")
 level = 1
 Replay = {
-31: ["Up_pressed"],
-42: ["Left_pressed"],
-45: ["Up_released"],
-46: ["Right_pressed"],
-52: ["Down_pressed", "Left_released"],
-59: ["Left_pressed"],
-60: ["Right_released"],
-61: ["Down_released"],
-69: ["Up_pressed"],
-70: ["Right_pressed"],
-71: ["Left_released"],
-81: ["Left_pressed"],
-84: ["Up_released", "Right_released"],
-88: ["Left_released"]
+67: ["Up_pressed", ["x = ", 421.0], ["y = ", 249.0]],
+91: ["Up_released", ["x = ", 421.0], ["y = ", 129.0]],
+115: ["Down_pressed", ["x = ", 421.0], ["y = ", 129.0]],
+142: ["Down_released", ["x = ", 421.0], ["y = ", 264.0]],
+161: ["Right_pressed", ["x = ", 421.0], ["y = ", 264.0]],
+187: ["Right_released", ["x = ", 551.0], ["y = ", 264.0]],
+206: ["Left_pressed", ["x = ", 551.0], ["y = ", 264.0]],
+235: ["Left_released", ["x = ", 406.0], ["y = ", 264.0]]
 }

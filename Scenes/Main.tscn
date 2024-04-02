@@ -19,5 +19,5 @@ scale = Vector2(0.160002, 0.160002)
 floor_stop_on_slope = false
 
 [node name="MainGhost" parent="." instance=ExtResource("3_a4wib")]
-position = Vector2(389, 287)
+position = Vector2(422, 249)
 scale = Vector2(0.16, 0.16)

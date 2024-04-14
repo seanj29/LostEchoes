@@ -2,12 +2,14 @@ extends Node2D
 
 @export var levelNumber: int = 1
 @export var ReplayResource: ReplayGhost
+
 var count: int = 0
+var levelPath = "user://Level_%s" % [levelNumber]
 const PATH = "user://replay1.tres"
 # Will have to make a manual save function, thing the issue is this doesn't get triggered consistently
 
 func _ready():
-    ReplayResource.level = levelNumber
+    ReplayResource.levelNo = levelNumber
 
 func save(resource: Resource):
     count += 1

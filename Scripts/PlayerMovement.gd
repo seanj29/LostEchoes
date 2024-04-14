@@ -97,7 +97,7 @@ func _unhandled_key_input(event: InputEvent):
 	if event.is_action_pressed("Save"):
 		Level.save(Level.ReplayResource)
 	if event.is_action_pressed("Delete"):
-		Level.delete()
+		Level.delete_all()
 
 
 

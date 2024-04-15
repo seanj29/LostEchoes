@@ -16,11 +16,10 @@ MaxGhostAmount = null
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_gi58w")]
 y_sort_enabled = true
-position = Vector2(421, 249)
-scale = Vector2(0.160002, 0.160002)
+position = Vector2(396, 246)
 floor_stop_on_slope = false
 
 [node name="Ghost_1" parent="." instance=ExtResource("3_a4wib")]
 position = Vector2(422, 249)
 scale = Vector2(0.16, 0.16)
-GhostID = 5
+GhostID = null

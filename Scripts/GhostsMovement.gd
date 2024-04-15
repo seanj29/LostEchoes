@@ -2,6 +2,7 @@ extends AnimatedSprite2D
 
 
 @onready var Level := get_node("/root/Level")
+
 @export_range(1, 5,) var GhostID: int = 1
 
 var ReplayDict: Dictionary
@@ -16,7 +17,7 @@ func _ready():
 		ReplayDict = LoadedReplay.Replay
 		print("GhostMovement.gd: resource loaded")
 	else:
-		print("GhostMovement.gd: No Resource found yet")
+		print("GhostMovement.gd: No Resource found for Ghost Id %d" % GhostID)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

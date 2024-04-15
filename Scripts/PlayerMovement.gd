@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @onready var Level := get_node("/root/Level")
+@onready var animated_sprite: AnimScript = $Sprite
+
 
 @export var CurrentReplayResource: ReplayGhost
 
@@ -28,9 +30,13 @@ func _physics_process(_delta):
 
 	var direction = Input.get_vector("Left", "Right", "Up", "Down")
 	if direction:
+		print(direction)
 		velocity = direction * SPEED
+		animated_sprite.play_walk()
 	else:
 		velocity = Vector2.ZERO
+		animated_sprite.play_idle()
+
 
 	move_and_slide()
 

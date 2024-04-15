@@ -18,8 +18,11 @@ func play_walk():
 			play("Walk_N")
 		Direction.E:
 			play("Walk_E")
+		Direction.W:
+			play("Walk_W")
 		Direction.S: 
 			play("Walk_S")
+		
 		_: 
 			print("WHy is this not wokring aaaah")
 
@@ -31,6 +34,8 @@ func play_idle():
 			play("Idle_N")
 		Direction.E:
 			play("Idle_E")
+		Direction.W:
+			play("Idle_W")
 		Direction.S: 
 			play("Idle_S")
 		_: 

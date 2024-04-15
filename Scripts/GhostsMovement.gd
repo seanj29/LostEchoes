@@ -2,6 +2,7 @@ extends AnimatedSprite2D
 
 
 @onready var Level := get_node("/root/Level")
+@export var GhostID := 1
 
 var ReplayDict: Dictionary
 
@@ -10,7 +11,7 @@ var currentFrame: int = 0
 var ActionsState := {Up_pressed = false, Down_pressed = false, Left_pressed = false, Right_pressed = false}
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var LoadedReplay: ReplayGhost = Level.load_new()
+	var LoadedReplay: ReplayGhost = Level.load_ghost_by_id(GhostID)
 	if LoadedReplay:
 		ReplayDict = LoadedReplay.Replay
 		print("GhostMovement.gd: resource loaded")

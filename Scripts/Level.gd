@@ -14,7 +14,7 @@ var savePathDir = "%s/Ghosts" % baseDir
 func _ready():
     ReplayResource.levelNumber = levelNumber
 
-func save(resource: Resource):
+func save(resource: Resource) -> Error:
     var dir_error := _check_dir(savePathDir)
     var replayName = "replay_%02d.tres" % currentGhostCount
     var savePath = "%s/%s" % [savePathDir, replayName]
@@ -23,7 +23,7 @@ func save(resource: Resource):
 
     if dir_error != OK:
         print("Could not create directory located in %s , Error: %s" % [ ProjectSettings.globalize_path(savePathDir), error_string(dir_error)])
-
+        return dir_error
     else:
         currentGhostCount += 1
         print(savePath)
@@ -38,15 +38,18 @@ func save(resource: Resource):
             print("Deleting ghost at %s" % savePath)
             ResourceSaver.save(resource, savePath)
             print("Saving ghost %s" % savePath)
-        
 
-func load_new() -> ReplayGhost:
-    var tempPath1 = "%s/replay_01.tres" % savePathDir
-    if ResourceLoader.exists(tempPath1):
-        print("%s being loaded" % tempPath1)
-        return ResourceLoader.load(tempPath1, "ReplayGhost")
-    else:
+    return OK
+
+
+func load_ghost_by_id(ghostID: int) -> ReplayGhost:
+
+    var ghostPath = "%s/replay_%02d.tres" % [savePathDir, ghostID]
+    if !ResourceLoader.exists(ghostPath):
         return null
+    else:
+        print("%s being loaded" % ghostPath)
+        return ResourceLoader.load(ghostPath, "ReplayGhost")
 
 func delete_all() -> Error:
     var delete_dir := DirAccess.open(savePathDir)
@@ -67,16 +70,17 @@ func delete_all() -> Error:
 func delete_one(FilePathToDelete: String) -> Error:
     var global_path = ProjectSettings.globalize_path(FilePathToDelete)
     print("Attempting to delete %s" % global_path)
-    if ResourceLoader.exists(global_path):
+    if !ResourceLoader.exists(global_path):
+        printerr("Could not find resource to delete at path: %s" % global_path)
+        return ERR_FILE_NOT_FOUND
+    else:
         var error = OS.move_to_trash(global_path)
         if error:
             return error
         else:
             print("%s deleted" % global_path)
             return OK
-    else:
-        printerr("Could not find resource to delete at path: %s" % global_path)
-        return ERR_FILE_NOT_FOUND
+        
 
 
 func _check_dir(dir: String) -> Error:

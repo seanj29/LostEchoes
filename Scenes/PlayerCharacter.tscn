@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ytlk7kin8xrn"]
+[gd_scene load_steps=6 format=3 uid="uid://ytlk7kin8xrn"]
 
 [ext_resource type="Texture2D" uid="uid://j4f5cl4bpktj" path="res://icon.svg" id="1_q5jch"]
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="2_0lkm0"]
+[ext_resource type="Resource" uid="uid://dn3wfxt11ajx3" path="res://Resources/ReplayTemplate.tres" id="2_mqgb5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sn20r"]
 animations = [{
@@ -20,6 +21,7 @@ size = Vector2(86, 28)
 [node name="PlayerChar" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("2_0lkm0")
+CurrentReplayResource = ExtResource("2_mqgb5")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sn20r")

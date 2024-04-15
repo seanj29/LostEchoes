@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var Level := get_node("/root/Level")
 
+@export var CurrentReplayResource: ReplayGhost
 
 @export var SPEED = 300.0
 @export var FRICTION = 1500.00
@@ -13,17 +14,13 @@ Using this multiline string to stop the weirdness with links above
 """
 
 var ReplayDict: Dictionary
+
 var ActionArray: Array[String] = ["Up", "Down", "Left", "Right", "Special"] # Cam't use InputMap.get_actions() here as the array it produces it too large, would need to weight up preformance vs code readability.
 
 func _ready():
 
-	var LoadedReplay: ReplayGhost = Level.load_new()
-	if LoadedReplay:
-		ReplayDict = LoadedReplay.Replay
-		print("PlayMovement.gd: resource loaded")
-	else:
-		ReplayDict = Level.ReplayResource.Replay
-		print("PlayMovement.gd: Resource not found")
+	ReplayDict = CurrentReplayResource.Replay
+
 
 
 func _physics_process(_delta):
@@ -68,34 +65,8 @@ func _unhandled_key_input(event: InputEvent):
 			ReplayDict[Frame].append_array(actionsThisFrame)
 
 
-
-	# if event.is_action_pressed("Up"):
-	# 	if !ReplayDict.has(Frame):
-	# 		ReplayDict[Frame] = ["Up"]
-	# 	else:
-	# 		ReplayDict[Frame].append("Up")
-	# if event.is_action_pressed("Down"):
-	# 	if !ReplayDict.has(Frame):
-	# 		ReplayDict[Frame] = ["Down"]
-	# 	else:
-	# 		ReplayDict[Frame].append("Down")
-	# if event.is_action_pressed("Left"):
-	# 	if !ReplayDict.has(Frame):
-	# 		ReplayDict[Frame] = ["Left"]
-	# 	else:
-	# 		ReplayDict[Frame].append("Left")
-	# if event.is_action_pressed("Right"):
-	# 	if !ReplayDict.has(Frame):
-	# 		ReplayDict[Frame] = ["Right"]
-	# 	else:
-	# 		ReplayDict[Frame].append("Right")
-	
-	# for iFrame: int in ReplayDict.keys():
-	# 	print("Frame: %s	ActionArray %s" % [iFrame, ReplayDict[iFrame]])
-	# print("\n")
-
 	if event.is_action_pressed("Save"):
-		Level.save(Level.ReplayResource)
+		Level.save(CurrentReplayResource)
 	if event.is_action_pressed("Delete"):
 		Level.delete_all()
 

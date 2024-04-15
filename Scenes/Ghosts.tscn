@@ -14,7 +14,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="MainGhost" type="AnimatedSprite2D"]
+[node name="MainGhost" type="AnimatedSprite2D" groups=["GhostsGroup"]]
 modulate = Color(1, 1, 1, 0.572549)
 sprite_frames = SubResource("SpriteFrames_y8jaq")
 script = ExtResource("2_e18ss")

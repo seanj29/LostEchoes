@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 @export var CurrentReplayResource: ReplayGhost
 
+@export_group("Player Physics")
 @export var SPEED = 300.0
 @export var FRICTION = 1500.00
 

@@ -2,7 +2,7 @@ extends AnimatedSprite2D
 
 
 @onready var Level := get_node("/root/Level")
-@export var GhostID := 1
+@export_range(1, 5,) var GhostID: int = 1
 
 var ReplayDict: Dictionary
 

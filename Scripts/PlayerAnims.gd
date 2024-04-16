@@ -37,7 +37,7 @@ func play_walk(dir: Vector2):
 			print("for me, impossible")
 
 func play_idle():
-	
+
 	match current_direction:
 
 		Direction.N:

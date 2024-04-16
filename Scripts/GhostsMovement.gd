@@ -1,4 +1,4 @@
-extends AnimatedSprite2D
+extends AnimScript
 
 
 @onready var Level := get_node("/root/Level")
@@ -7,7 +7,9 @@ extends AnimatedSprite2D
 
 var ReplayDict: Dictionary
 
+
 enum ActionsEnum {MOVE_LEFT,MOVE_RIGHT, MOVE_UP, MOVE_DOWN, SPECIAL}
+
 var currentFrame: int = 0
 var ActionsState := {Up_pressed = false, Down_pressed = false, Left_pressed = false, Right_pressed = false}
 # Called when the node enters the scene tree for the first time.
@@ -60,13 +62,27 @@ func parseAction(Action: String):
 
 
 func Movement(StateDict: Dictionary) -> void:
-
+	var current_direction_vector = Vector2.ZERO
 	if StateDict.Up_pressed:
 		position.y -= 5
+		current_direction_vector.y = -1
 	if StateDict.Down_pressed:
 		position.y += 5
+		current_direction_vector.y = 1
 	if StateDict.Left_pressed:
 		position.x -= 5
+		current_direction_vector.x = -1
 	if StateDict.Right_pressed:
 		position.x += 5
+		current_direction_vector.x = 1
+
+	play_anim(current_direction_vector)
 	return
+
+
+
+func play_anim(vec: Vector2):
+	if vec:
+		play_walk(vec)
+	else:
+		play_idle()

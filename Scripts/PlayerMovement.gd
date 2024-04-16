@@ -1,42 +1,80 @@
 extends CharacterBody2D
 
+@onready var Level := get_node("/root/Level")
+@onready var animated_sprite: AnimScript = $Sprite
 
+
+@export var CurrentReplayResource: ReplayGhost
+
+@export_group("Player Physics")
 @export var SPEED = 300.0
 @export var FRICTION = 1500.00
 
-var ReplayTest:Array[ReplayFrame] = []
+#  All instances of res:// in filename will be changed to user:// pre production
+"""
+Using this multiline string to stop the weirdness with links above
+
+"""
+
+var ReplayDict: Dictionary
+
+var ActionArray: Array[String] = ["Up", "Down", "Left", "Right", "Special"] # Cam't use InputMap.get_actions() here as the array it produces it too large, would need to weight up preformance vs code readability.
+
+func _ready():
+
+	ReplayDict = CurrentReplayResource.Replay
+
+
 
 func _physics_process(_delta):
 
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	# TODO add better actions blah blah
-
-	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direction = Input.get_vector("Left", "Right", "Up", "Down")
 	if direction:
 		velocity = direction * SPEED
+		animated_sprite.play_walk(direction)
 	else:
 		velocity = Vector2.ZERO
+		animated_sprite.play_idle()
+
 
 	move_and_slide()
 
 
 func _unhandled_key_input(event: InputEvent):
+	
+	var Frame := Engine.get_physics_frames()
 
-	if event.is_action_pressed("ui_up"):
-		var FrameObject = ReplayFrame.new(Engine.get_physics_frames(), ["Move UP"])
-		ReplayTest.append(FrameObject)
-		print("FrameList:")
-		for Frame in ReplayTest:
-			print("	Frame: %s 	Actions: %s"  % [Frame.FrameNumber, Frame.ActionArr])	
+	var actionsMap := ActionArray.map(
+		func(action: String): 
+		if event.is_action_pressed(action):
+			return "%s_pressed" % action
+		elif event.is_action_released(action):
+			return "%s_released" % action
+		else:
+			return
+		)
+
+	var actionsThisFrame := actionsMap.filter(
+		func(action) -> bool:
+		return action != null
+	)
+
+		
+	if not actionsThisFrame.is_empty():
+		var currentX = position.x
+		var currentY = position.y
+		actionsThisFrame.append(["x = ",currentX])	
+		actionsThisFrame.append(["y = ",currentY])
+		if !ReplayDict.has(Frame):
+			ReplayDict[Frame] = actionsThisFrame
+		else:
+			ReplayDict[Frame].append_array(actionsThisFrame)
 
 
-class ReplayFrame:
+	if event.is_action_pressed("Save"):
+		Level.save(CurrentReplayResource)
+	if event.is_action_pressed("Delete"):
+		Level.delete_all()
 
-	var FrameNumber: int
-	var ActionArr: Array[String]
 
-	func _init(Frame: int, Actions: Array[String]):
-		FrameNumber = Frame
-		ActionArr = Actions	
+

@@ -11,58 +11,74 @@ var VectorSE := (Vector2.DOWN + Vector2.RIGHT).normalized()
 var VectorSW := (Vector2.DOWN + Vector2.LEFT).normalized()
 
 # Called when the node enters the scene tree for the first time.
-func play_walk():
-	# TODO: iimplement the rest of the directions both here
+func play_walk(dir: Vector2):
+
+	current_direction = _calc_direction(dir)
+
 	match current_direction:
 		Direction.N:
 			play("Walk_N")
+		Direction.NE:
+			play("Walk_NE")
 		Direction.E:
 			play("Walk_E")
+		Direction.SE:
+			play("Walk_SE")
 		Direction.W:
 			play("Walk_W")
+		Direction.NW:
+			play("Walk_NW")
 		Direction.S: 
 			play("Walk_S")
+		Direction.SW: 
+			play("Walk_SW")
 		
 		_: 
-			print("WHy is this not wokring aaaah")
+			print("for me, impossible")
 
 func play_idle():
-	# TODO: and here
+	
 	match current_direction:
 
 		Direction.N:
 			play("Idle_N")
+		Direction.NE:
+			play("Idle_NE")
 		Direction.E:
 			play("Idle_E")
+		Direction.SE:
+			play("Idle_SE")
 		Direction.W:
 			play("Idle_W")
+		Direction.NW:
+			play("Idle_NW")
 		Direction.S: 
 			play("Idle_S")
+		Direction.SW:
+			play("Idle_SW")
 		_: 
-			print("haven't implemented yet oops")
+			print("How??")
 
 
-func _physics_process(_delta):
+func _calc_direction(dir: Vector2):
 
-	var direction := Input.get_vector("Left", "Right", "Up", "Down")
-
-	match direction:
+	match dir:
 		
 		Vector2.UP:
-			current_direction = Direction.N
+			return Direction.N
 		VectorNE:
-			current_direction = Direction.NE
+			return Direction.NE
 		Vector2.RIGHT:
-			current_direction = Direction.E
+			return Direction.E
 		VectorSE:
-			current_direction = Direction.SE
+			return Direction.SE
 		Vector2.LEFT:
-			current_direction = Direction.W
+			return Direction.W
 		VectorNW:
-			current_direction = Direction.NW
+			return Direction.NW
 		Vector2.DOWN:
-			current_direction = Direction.S
+			return Direction.S
 		VectorSW:
-			current_direction = Direction.SW
+			return Direction.SW
 
 

@@ -31,7 +31,7 @@ func _physics_process(_delta):
 	var direction = Input.get_vector("Left", "Right", "Up", "Down")
 	if direction:
 		velocity = direction * SPEED
-		animated_sprite.play_walk()
+		animated_sprite.play_walk(direction)
 	else:
 		velocity = Vector2.ZERO
 		animated_sprite.play_idle()

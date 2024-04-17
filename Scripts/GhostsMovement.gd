@@ -76,7 +76,7 @@ func Movement(StateDict: Dictionary) -> void:
 		position.x += 5
 		current_direction_vector.x = 1
 
-	play_anim(current_direction_vector)
+	play_anim(current_direction_vector.normalized())
 	return
 
 

@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var CurrentReplayResource: ReplayGhost
 
 @export_group("Player Physics")
-@export var SPEED = 300.0
+@export var SPEED = 250.0
 @export var FRICTION = 1500.00
 
 #  All instances of res:// in filename will be changed to user:// pre production

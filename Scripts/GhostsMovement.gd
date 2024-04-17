@@ -68,19 +68,19 @@ func parseAction(Action: String):
 
 
 func Movement(StateDict: Dictionary) -> void:
-	var current_direction_vector = Vector2.ZERO
+	var current_direction_vector = Vector2(0, 0)
 	if StateDict.Up_pressed:
-		position.y -= 5
-		current_direction_vector.y = -1
+		position.y -= 4
+		current_direction_vector.y -= 1
 	if StateDict.Down_pressed:
-		position.y += 5
-		current_direction_vector.y = 1
+		position.y += 4
+		current_direction_vector.y += 1
 	if StateDict.Left_pressed:
-		position.x -= 5
-		current_direction_vector.x = -1
+		position.x -= 4
+		current_direction_vector.x -= 1
 	if StateDict.Right_pressed:
-		position.x += 5
-		current_direction_vector.x = 1
+		position.x += 4
+		current_direction_vector.x += 1
 
 	play_anim(current_direction_vector.normalized())
 	return

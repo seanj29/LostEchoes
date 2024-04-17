@@ -19,3 +19,7 @@ floor_stop_on_slope = false
 
 [node name="Ghost_1" parent="." instance=ExtResource("3_a4wib")]
 position = Vector2(422, 249)
+
+[node name="Ghost_2" parent="." instance=ExtResource("3_a4wib")]
+position = Vector2(422, 249)
+GhostID = 2

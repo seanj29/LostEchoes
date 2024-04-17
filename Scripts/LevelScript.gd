@@ -16,8 +16,7 @@ func _ready():
 
 func save(resource: Resource) -> Error:
     var dir_error := _check_dir(savePathDir)
-    var replayName = "replay_%02d.tres" % currentGhostCount
-    var savePath = "%s/%s" % [savePathDir, replayName]
+    
 
 
 
@@ -25,19 +24,28 @@ func save(resource: Resource) -> Error:
         print("Could not create directory located in %s , Error: %s" % [ ProjectSettings.globalize_path(savePathDir), error_string(dir_error)])
         return dir_error
     else:
-        currentGhostCount += 1
-        print(savePath)
-        if currentGhostCount > MaxGhostAmount:
-            currentGhostCount = 1
 
-        if !ResourceLoader.exists(savePath):
-            ResourceSaver.save(resource, savePath)
-            print("Saving ghost %s" % savePath)
-        else:
-            delete_one(savePath)
-            print("Deleting ghost at %s" % savePath)
-            ResourceSaver.save(resource, savePath)
-            print("Saving ghost %s" % savePath)
+        var replayName = "replay_%02d.tres" % currentGhostCount
+        var savePath = "%s/%s" % [savePathDir, replayName]
+        print(savePath)
+
+        while ResourceLoader.exists(savePath):
+            if currentGhostCount >= MaxGhostAmount:
+                currentGhostCount = 1
+                replayName = "replay_%02d.tres" % currentGhostCount
+                savePath = "%s/%s" % [savePathDir, replayName]
+                print("Deleting ghost at %s" % savePath)
+                var del_error = delete_one(savePath)
+                if del_error:
+                    printerr("Error when deleting ghost %s" % error_string(del_error))
+                    return del_error
+            else:
+                currentGhostCount += 1
+                replayName = "replay_%02d.tres" % currentGhostCount
+                savePath = "%s/%s" % [savePathDir, replayName]
+                
+        ResourceSaver.save(resource, savePath)
+        print("Saving ghost %s" % savePath)
 
     return OK
 

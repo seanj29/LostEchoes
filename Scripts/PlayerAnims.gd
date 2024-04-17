@@ -2,15 +2,22 @@ extends AnimatedSprite2D
 
 class_name AnimScript
 
+## Enum for each Direction possible in 2d isometric space
 enum Direction {N, NE, E, SE, S, SW, W, NW}
+
+## The current direction the sprite is facing. [br]
+## if it it is given a default, then the Sprite will start in that direction.
 var current_direction: Direction
 
+## Following consts are added to be able to use in switch case statements.
 var VectorNE := (Vector2.UP + Vector2.RIGHT).normalized()
 var VectorNW := (Vector2.UP + Vector2.LEFT).normalized()
 var VectorSE := (Vector2.DOWN + Vector2.RIGHT).normalized()
 var VectorSW := (Vector2.DOWN + Vector2.LEFT).normalized()
 
-# Called when the node enters the scene tree for the first time.
+
+## Play the relevant walk animation for a sprite.[br]
+## [param dir] is the current direction the body is intending to go in, in Vector2 format.
 func play_walk(dir: Vector2):
 
 	current_direction = _calc_direction(dir)
@@ -36,6 +43,8 @@ func play_walk(dir: Vector2):
 		_: 
 			print("for me, impossible")
 
+
+## Play the sprites Idle animation based on current direction.
 func play_idle():
 
 	match current_direction:
@@ -60,6 +69,7 @@ func play_idle():
 			print("How??")
 
 
+## This function calculates the direction, based on [param dir], which is usually called during the [method play_walk] function.
 func _calc_direction(dir: Vector2):
 
 	match dir:

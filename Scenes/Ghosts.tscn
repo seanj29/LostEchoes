@@ -6,5 +6,5 @@
 [node name="MainGhost" type="AnimatedSprite2D" groups=["GhostsGroup"]]
 modulate = Color(0.85098, 1, 1, 0.752941)
 sprite_frames = ExtResource("1_udyqo")
-animation = &"Idle_E"
+animation = &"Walk_W"
 script = ExtResource("2_e18ss")

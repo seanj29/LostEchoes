@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=99 format=3 uid="uid://brkufq8y6lv1e"]
+[gd_resource type="SpriteFrames" load_steps=98 format=3 uid="uid://brkufq8y6lv1e"]
 
 [ext_resource type="Texture2D" uid="uid://dupmfwc6ipfpq" path="res://Assets/Mage-Sheet.png" id="1_sb08a"]
 
@@ -145,10 +145,6 @@ region = Rect2(128, 720, 32, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_50pks"]
 atlas = ExtResource("1_sb08a")
 region = Rect2(160, 720, 32, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m3ud7"]
-atlas = ExtResource("1_sb08a")
-region = Rect2(32, 624, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gakv8"]
 atlas = ExtResource("1_sb08a")
@@ -531,9 +527,6 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m3ud7")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gakv8")
 }, {

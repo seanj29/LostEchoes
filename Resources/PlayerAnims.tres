@@ -601,7 +601,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attack_E",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -624,7 +624,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attack_N",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -647,7 +647,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attack_NE",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -670,7 +670,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attack_NW",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -693,7 +693,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attack_S",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -716,7 +716,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attack_SE",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -739,7 +739,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attack_SW",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -762,7 +762,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attack_W",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,

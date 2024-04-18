@@ -21,16 +21,18 @@ func _ready():
 
 
 func _physics_process(_delta):
+	
+	if Input.is_action_just_pressed("Attack"):
+		animated_sprite.play_attack()
 
 	var direction = Input.get_vector("Left", "Right", "Up", "Down")
+
 	if direction:
 		velocity = direction * SPEED
-		animated_sprite.play_walk(direction)
 	else:
 		velocity = Vector2.ZERO
-		if not animated_sprite.animation.begins_with("Attack"):
-			animated_sprite.play_idle()
 
+	animated_sprite.anim_picker(direction)
 
 	move_and_slide()
 
@@ -38,12 +40,11 @@ func _physics_process(_delta):
 func _unhandled_key_input(event: InputEvent):
 	
 	record_input(event)
-
-
 	if event.is_action_pressed("Save"):
 		Level.save(CurrentReplayResource)
 	if event.is_action_pressed("Delete"):
 		Level.delete_all()
+
 
 
 ## internal function to record the state of any actions taken by the player this frame, and pass it into the level save.

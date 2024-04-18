@@ -7,7 +7,7 @@ enum Direction {N, NE, E, SE, S, SW, W, NW}
 
 ## The current direction the sprite is facing. [br]
 ## if it it is given a default, then the Sprite will start in that direction.
-var current_direction: Direction
+var current_direction: Direction = Direction.S
 
 ## Following consts are added to be able to use in switch case statements.
 var VectorNE := (Vector2.UP + Vector2.RIGHT).normalized()
@@ -15,6 +15,29 @@ var VectorNW := (Vector2.UP + Vector2.LEFT).normalized()
 var VectorSE := (Vector2.DOWN + Vector2.RIGHT).normalized()
 var VectorSW := (Vector2.DOWN + Vector2.LEFT).normalized()
 
+
+func play_attack():
+
+	match current_direction:
+		Direction.N:
+			play("Attack_N")
+		Direction.NE:
+			play("Attack_NE")
+		Direction.E:
+			play("Attack_E")
+		Direction.SE:
+			play("Attack_SE")
+		Direction.W:
+			play("Attack_W")
+		Direction.NW:
+			play("Attack_NW")
+		Direction.S: 
+			play("Attack_S")
+		Direction.SW: 
+			play("Attack_SW")
+		
+		_: 
+			print("for me, impossible")
 
 ## Play the relevant walk animation for a sprite.[br]
 ## [param dir] is the current direction the body is intending to go in, in Vector2 format.
@@ -90,5 +113,19 @@ func _calc_direction(dir: Vector2):
 			return Direction.S
 		VectorSW:
 			return Direction.SW
+
+
+func anim_picker(dir: Vector2):
+
+	if self.animation.begins_with("Attack"):
+		await self.animation_finished
+
+	if dir:
+		current_direction = _calc_direction(dir)
+		play_walk(dir)
+	else:
+		play_idle()
+		
+
 
 

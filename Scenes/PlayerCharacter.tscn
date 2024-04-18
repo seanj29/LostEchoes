@@ -16,7 +16,7 @@ CurrentReplayResource = ExtResource("2_mqgb5")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("3_u33lu")
-animation = &"Idle_S"
+animation = &"Idle_E"
 script = ExtResource("4_5v3hj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

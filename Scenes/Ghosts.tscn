@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://c5u1ux0sy1bwg"]
 
 [ext_resource type="SpriteFrames" uid="uid://brkufq8y6lv1e" path="res://Resources/PlayerAnims.tres" id="1_udyqo"]
-[ext_resource type="Script" path="res://Scripts/GhostsMovement.gd" id="2_e18ss"]
-[ext_resource type="Script" path="res://Scripts/GhostAnim.gd" id="3_v0v1i"]
+[ext_resource type="Script" path="res://Scripts/GhostScripts/GhostsMovement.gd" id="2_e18ss"]
+[ext_resource type="Script" path="res://Scripts/GhostScripts/GhostAnim.gd" id="3_a73sg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wp0l"]
 size = Vector2(16, 9)
@@ -15,7 +15,7 @@ script = ExtResource("2_e18ss")
 modulate = Color(0.85098, 1, 1, 0.752941)
 sprite_frames = ExtResource("1_udyqo")
 animation = &"Walk_W"
-script = ExtResource("3_v0v1i")
+script = ExtResource("3_a73sg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 18.5)

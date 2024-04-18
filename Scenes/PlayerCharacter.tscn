@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://ytlk7kin8xrn"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="2_0lkm0"]
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/PlayerMovement.gd" id="2_0lkm0"]
 [ext_resource type="Resource" uid="uid://dn3wfxt11ajx3" path="res://Resources/ReplayTemplate.tres" id="2_mqgb5"]
 [ext_resource type="SpriteFrames" uid="uid://brkufq8y6lv1e" path="res://Resources/PlayerAnims.tres" id="3_u33lu"]
-[ext_resource type="Script" path="res://Scripts/PlayerAnims.gd" id="4_3xseh"]
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/PlayerAnims.gd" id="4_5v3hj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xw2p"]
 size = Vector2(16, 9)
@@ -17,7 +17,7 @@ CurrentReplayResource = ExtResource("2_mqgb5")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("3_u33lu")
 animation = &"Walk_SW"
-script = ExtResource("4_3xseh")
+script = ExtResource("4_5v3hj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 18.5)

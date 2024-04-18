@@ -8,7 +8,6 @@ extends CharacterBody2D
 
 @export_group("Player Physics")
 @export var SPEED = 250.0
-@export var FRICTION = 1500.00
 
 #  All instances of res:// in filename will be changed to user:// pre production
 """

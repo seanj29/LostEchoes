@@ -1,23 +1,26 @@
-extends AnimScript
+extends CharacterBody2D
 
-## This script provides movement and animation to the Ghosts within the scene.
-##
-@onready var Level := get_node("/root/Level")
+
+## Handles movement for the ghost, and makes sure it collides properly with walls.
+@onready  var Level = get_node("/root/Level")
+
+@onready var SpriteScript: AnimScript = $MainGhostAnim
 
 ## The ID of the Ghost. Used for loading it's replays from the level.
 @export_range(1, 5,) var GhostID: int = 1
 
-var ReplayDict: Dictionary
+@export_group("Ghost Physics")
+@export var SPEED = 250.0
 
 enum ActionsEnum {MOVE_LEFT,MOVE_RIGHT, MOVE_UP, MOVE_DOWN, SPECIAL}
-
+var ReplayDict: Dictionary
 var currentFrame: int = 0
 
 ## This dict stores the curent state of the various buttons
 # TODO Replace the ActionsState with a bitflag instead of a dict? maybe
 var ActionsState := {Up_pressed = false, Down_pressed = false, Left_pressed = false, Right_pressed = false}
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	var LoadedReplay: ReplayGhost = Level.load_ghost_by_id(GhostID)
 	if LoadedReplay:
@@ -27,10 +30,8 @@ func _ready():
 		print("GhostMovement.gd: No Resource found for Ghost Id %d" % GhostID)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
 	
-
 	if ReplayDict:
 		currentFrame += 1
 		var ActionsTaken = ReplayDict.get(currentFrame) 
@@ -39,11 +40,18 @@ func _physics_process(_delta):
 				if Action is String:
 					parseAction(Action)
 
-	Movement(ActionsState)
+	var direction = cal_direction_vector(ActionsState)
+	SpriteScript.play_anim(direction)
 
+	if direction:
+		velocity = direction * SPEED
+	else:
+		velocity = Vector2.ZERO
+
+	move_and_slide()
 
 ## Fuction that parses the Actions in the [member ReplayDict].[br] 
-## Parses iin a string and changes the global [member ActionsState] dict accordingly. 
+## Parses a string action and changes the global [member ActionsState] dict accordingly. 
 func parseAction(Action: String):
 	match Action.to_lower():
 		"up_pressed":
@@ -66,30 +74,15 @@ func parseAction(Action: String):
 			print(anything_else)
 	return
 
-
-func Movement(StateDict: Dictionary) -> void:
+func cal_direction_vector(StateDict: Dictionary) -> Vector2:
 	var current_direction_vector = Vector2(0, 0)
 	if StateDict.Up_pressed:
-		position.y -= 4
 		current_direction_vector.y -= 1
 	if StateDict.Down_pressed:
-		position.y += 4
 		current_direction_vector.y += 1
 	if StateDict.Left_pressed:
-		position.x -= 4
 		current_direction_vector.x -= 1
 	if StateDict.Right_pressed:
-		position.x += 4
 		current_direction_vector.x += 1
-
-	play_anim(current_direction_vector.normalized())
-	return
-
-
-## Called to decide which animation to played depending on whether the sprite is moving or not. [br]
-## [param vec] needs to be a normalized of length.
-func play_anim(vec: Vector2):
-	if vec:
-		play_walk(vec)
-	else:
-		play_idle()
+	
+	return current_direction_vector.normalized()

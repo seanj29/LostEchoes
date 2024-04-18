@@ -36,6 +36,18 @@ func _physics_process(_delta):
 
 func _unhandled_key_input(event: InputEvent):
 	
+	record_input(event)
+
+
+	if event.is_action_pressed("Save"):
+		Level.save(CurrentReplayResource)
+	if event.is_action_pressed("Delete"):
+		Level.delete_all()
+
+
+## internal function to record the state of any actions taken by the player this frame, and pass it into the level save.
+func record_input(event: InputEvent):
+	
 	var Frame := Engine.get_physics_frames()
 
 	var actionsMap := ActionArray.map(
@@ -59,12 +71,6 @@ func _unhandled_key_input(event: InputEvent):
 			ReplayDict[Frame] = actionsThisFrame
 		else:
 			ReplayDict[Frame].append_array(actionsThisFrame)
-
-
-	if event.is_action_pressed("Save"):
-		Level.save(CurrentReplayResource)
-	if event.is_action_pressed("Delete"):
-		Level.delete_all()
-
-
+			
+	return
 

@@ -12,7 +12,6 @@ extends CharacterBody2D
 @export_group("Ghost Physics")
 @export var SPEED = 250.0
 
-enum ActionsEnum {MOVE_LEFT,MOVE_RIGHT, MOVE_UP, MOVE_DOWN, SPECIAL}
 var ReplayDict: Dictionary
 var currentFrame: int = 0
 
@@ -25,9 +24,9 @@ func _ready():
 	var LoadedReplay: ReplayGhost = Level.load_ghost_by_id(GhostID)
 	if LoadedReplay:
 		ReplayDict = LoadedReplay.Replay
-		print("GhostMovement.gd: resource loaded")
+		print("GhostMovement.gd for Ghost Id %d says : resource loaded" % GhostID)
 	else:
-		print("GhostMovement.gd: No Resource found for Ghost Id %d" % GhostID)
+		print("GhostMovement.gd for Ghost Id %d says: No Resource found" % GhostID)
 
 
 func _physics_process(_delta):
@@ -71,7 +70,7 @@ func parseAction(Action: String):
 		"right_released":
 			ActionsState.Right_pressed = false
 		var anything_else:
-			print(anything_else)
+			printerr("%s has not been implemented yet!" % anything_else)
 	return
 
 func cal_direction_vector(StateDict: Dictionary) -> Vector2:

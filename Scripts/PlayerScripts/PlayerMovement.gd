@@ -9,15 +9,10 @@ extends CharacterBody2D
 @export_group("Player Physics")
 @export var SPEED = 250.0
 
-#  All instances of res:// in filename will be changed to user:// pre production
-"""
-Using this multiline string to stop the weirdness with links above
-
-"""
 
 var ReplayDict: Dictionary
 
-var ActionArray: Array[String] = ["Up", "Down", "Left", "Right", "Special"] # Cam't use InputMap.get_actions() here as the array it produces it too large, would need to weight up preformance vs code readability.
+var ActionArray: Array[String] = ["Up", "Down", "Left", "Right", "Special"]
 
 func _ready():
 
@@ -60,10 +55,6 @@ func _unhandled_key_input(event: InputEvent):
 
 		
 	if not actionsThisFrame.is_empty():
-		var currentX = position.x
-		var currentY = position.y
-		actionsThisFrame.append(["x = ",currentX])	
-		actionsThisFrame.append(["y = ",currentY])
 		if !ReplayDict.has(Frame):
 			ReplayDict[Frame] = actionsThisFrame
 		else:

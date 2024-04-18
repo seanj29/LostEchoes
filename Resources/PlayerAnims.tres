@@ -599,7 +599,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_v1pk5")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack_E",
 "speed": 5.0
 }, {
@@ -622,7 +622,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oj4mb")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack_N",
 "speed": 5.0
 }, {
@@ -645,7 +645,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vdxyh")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack_NE",
 "speed": 5.0
 }, {
@@ -668,7 +668,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_anboc")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack_NW",
 "speed": 5.0
 }, {
@@ -691,7 +691,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_eovaf")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack_S",
 "speed": 5.0
 }, {
@@ -714,7 +714,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k2jhd")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack_SE",
 "speed": 5.0
 }, {
@@ -737,7 +737,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2mn22")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack_SW",
 "speed": 5.0
 }, {
@@ -760,7 +760,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7dhfd")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack_W",
 "speed": 5.0
 }, {

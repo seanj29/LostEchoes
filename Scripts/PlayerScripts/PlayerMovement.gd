@@ -12,7 +12,7 @@ extends CharacterBody2D
 
 var ReplayDict: Dictionary
 
-var ActionArray: Array[String] = ["Up", "Down", "Left", "Right", "Special"]
+var ActionArray: Array[String] = ["Up", "Down", "Left", "Right", "Attack"]
 
 func _ready():
 
@@ -28,7 +28,8 @@ func _physics_process(_delta):
 		animated_sprite.play_walk(direction)
 	else:
 		velocity = Vector2.ZERO
-		animated_sprite.play_idle()
+		if not animated_sprite.animation.begins_with("Attack"):
+			animated_sprite.play_idle()
 
 
 	move_and_slide()

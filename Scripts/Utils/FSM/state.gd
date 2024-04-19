@@ -13,8 +13,8 @@ func Exit() -> void:
 	pass
 
 ## Logic to be executed every frame
-func Update(delta: float) -> void:
+func Update(_delta: float) -> void:
 	pass
 ## Physics version of [method Update]
-func Physics_update(delta: float) -> void:
+func Physics_update(_delta: float) -> void:
 	pass

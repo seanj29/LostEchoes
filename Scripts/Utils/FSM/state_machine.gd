@@ -4,6 +4,10 @@ extends Node
 @export var current_state: State
 var states: Dictionary = {}
 
+## Last element in the state array will be the most recent state, similar to a stack
+# var state_stack: Array[State]
+
+
 func _ready():
     for child in get_children():
         if child is State:
@@ -14,6 +18,7 @@ func _ready():
         else:
             push_warning("State machine contains child which is not a State")
     # Start execution of the initial state
+    # state_stack.push_back(current_state)
     current_state.Enter()
 
 func _process(delta):

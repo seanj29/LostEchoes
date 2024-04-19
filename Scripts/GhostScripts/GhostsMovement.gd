@@ -4,7 +4,6 @@ extends CharacterBody2D
 ## Handles movement for the ghost, and makes sure it collides properly with walls.
 @onready  var Level = get_node("/root/Level")
 
-@onready var SpriteScript: AnimScript = $MainGhostAnim
 
 ## The ID of the Ghost. Used for loading it's replays from the level.
 @export_range(1, 5,) var GhostID: int = 1
@@ -42,15 +41,9 @@ func _physics_process(_delta):
 				if Action is String:
 					parseAction(Action)
 
-	if ActionsState.Attack_pressed:
-		SpriteScript.play_attack()
-		SPEED = 10
-		await SpriteScript.animation_finished
-	else:
-		SPEED = 250
 		
 	var direction = calc_direction_vector(ActionsState)
-	SpriteScript.anim_picker(direction)
+	# SpriteScript.anim_picker(direction)
 
 	if direction:
 		velocity = direction * SPEED

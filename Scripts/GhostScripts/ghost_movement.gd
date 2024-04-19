@@ -1,17 +1,14 @@
-extends CharacterBody2D
+class_name GhostMovement
 
+extends PawnMovement
 
 ## Handles movement for the ghost, and makes sure it collides properly with walls.
-@onready  var Level = get_node("/root/Level")
 
 
 ## The ID of the Ghost. Used for loading it's replays from the level.
 @export_range(1, 5,) var GhostID: int = 1
 
-@export_group("Ghost Physics")
-@export var SPEED = 250.0
 
-var ReplayDict: Dictionary
 var currentFrame: int = 0
 
 ## This dict stores the curent state of the various buttons
@@ -30,7 +27,6 @@ func _ready():
 
 func _physics_process(_delta):
 	
-
 	
 
 	if ReplayDict:
@@ -47,6 +43,7 @@ func _physics_process(_delta):
 
 	if direction:
 		velocity = direction * SPEED
+		super.calc_direction(direction)
 	else:
 		velocity = Vector2.ZERO
 

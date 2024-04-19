@@ -2,7 +2,7 @@ class_name AnimState
 extends State
 
 @export var sprite: AnimatedSprite2D
-@export var actor: PlayerChar
+@export var actor: PawnMovement
 @onready var facing := actor.current_direction
 
 

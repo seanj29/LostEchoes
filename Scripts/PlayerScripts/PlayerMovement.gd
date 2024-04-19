@@ -21,9 +21,12 @@ func _ready():
 
 
 func _physics_process(_delta):
-	
+
 	if Input.is_action_just_pressed("Attack"):
 		animated_sprite.play_attack()
+		SPEED = 25
+		await animated_sprite.animation_finished
+		SPEED = 250
 
 	var direction = Input.get_vector("Left", "Right", "Up", "Down")
 

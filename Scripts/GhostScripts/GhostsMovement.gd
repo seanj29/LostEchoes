@@ -17,7 +17,7 @@ var currentFrame: int = 0
 
 ## This dict stores the curent state of the various buttons
 # TODO Replace the ActionsState with a bitflag instead of a dict? maybe
-var ActionsState := {Up_pressed = false, Down_pressed = false, Left_pressed = false, Right_pressed = false}
+var ActionsState := {Up_pressed = false, Down_pressed = false, Left_pressed = false, Right_pressed = false, Attack_pressed = false}
 
 
 func _ready():
@@ -31,6 +31,9 @@ func _ready():
 
 func _physics_process(_delta):
 	
+
+	
+
 	if ReplayDict:
 		currentFrame += 1
 		var ActionsTaken = ReplayDict.get(currentFrame) 
@@ -39,8 +42,15 @@ func _physics_process(_delta):
 				if Action is String:
 					parseAction(Action)
 
-	var direction = cal_direction_vector(ActionsState)
-	SpriteScript.play_anim(direction)
+	if ActionsState.Attack_pressed:
+		SpriteScript.play_attack()
+		SPEED = 10
+		await SpriteScript.animation_finished
+	else:
+		SPEED = 250
+		
+	var direction = calc_direction_vector(ActionsState)
+	SpriteScript.anim_picker(direction)
 
 	if direction:
 		velocity = direction * SPEED
@@ -69,11 +79,15 @@ func parseAction(Action: String):
 			ActionsState.Right_pressed = true
 		"right_released":
 			ActionsState.Right_pressed = false
+		"attack_pressed":
+			ActionsState.Attack_pressed = true
+		"attack_released":
+			ActionsState.Attack_pressed = false
 		var anything_else:
 			printerr("%s has not been implemented yet!" % anything_else)
 	return
 
-func cal_direction_vector(StateDict: Dictionary) -> Vector2:
+func calc_direction_vector(StateDict: Dictionary) -> Vector2:
 	var current_direction_vector = Vector2(0, 0)
 	if StateDict.Up_pressed:
 		current_direction_vector.y -= 1

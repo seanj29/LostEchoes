@@ -114,14 +114,14 @@ func _calc_direction(dir: Vector2):
 		VectorSW:
 			return Direction.SW
 
-
+## Called to decide which animation to played depending on whether the sprite is moving or not. [br]
+## [param vec] needs to be a normalized Vetcor of length 1.
 func anim_picker(dir: Vector2):
 
 	if self.animation.begins_with("Attack"):
 		await self.animation_finished
 
 	if dir:
-		current_direction = _calc_direction(dir)
 		play_walk(dir)
 	else:
 		play_idle()

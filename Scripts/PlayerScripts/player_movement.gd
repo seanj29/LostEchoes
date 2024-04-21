@@ -4,7 +4,7 @@ extends PawnMovement
 
 
 @export var CurrentReplayResource: ReplayGhost
-
+@export var ice_shot_scene: PackedScene 
 
 
 var ActionArray: Array[String] = ["Up", "Down", "Left", "Right", "Attack"]
@@ -61,6 +61,8 @@ func direction_state() -> Vector2:
 func attack_state() -> bool:
 	if Input.is_action_just_pressed("Attack"):
 		attack_pressed.emit()
+		var ice_shot := ice_shot_scene.instantiate()
+		add_child(ice_shot)
 		return true
 	else:
 		return false

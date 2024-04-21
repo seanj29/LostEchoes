@@ -2,7 +2,7 @@
 
 [ext_resource type="SpriteFrames" uid="uid://brkufq8y6lv1e" path="res://Resources/PlayerAnims.tres" id="1_udyqo"]
 [ext_resource type="Script" path="res://Scripts/GhostScripts/ghost_movement.gd" id="1_vyjal"]
-[ext_resource type="PackedScene" uid="uid://bhntxqpi6vjbh" path="res://Scenes/FSMS/AnimMachineScene.tscn" id="3_a36rl"]
+[ext_resource type="PackedScene" uid="uid://bhntxqpi6vjbh" path="res://Scenes/FSMS/PawnAnimMachineScene.tscn" id="3_a36rl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wp0l"]
 size = Vector2(16, 9)

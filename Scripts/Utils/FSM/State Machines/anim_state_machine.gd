@@ -2,7 +2,7 @@ class_name AnimStateMachine
 extends StateMachine
 
 @export var sprite: AnimatedSprite2D
-@export var actor: PawnMovement
+@export var actor: CollisionObject2D
 
 
 func _ready():

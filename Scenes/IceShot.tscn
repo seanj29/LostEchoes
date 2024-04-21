@@ -1,9 +1,11 @@
-[gd_scene load_steps=68 format=3 uid="uid://dr11li6mau3yg"]
+[gd_scene load_steps=70 format=3 uid="uid://dr11li6mau3yg"]
 
+[ext_resource type="Script" path="res://Scripts/MagicScripts/ice_shot.gd" id="1_hamrq"]
 [ext_resource type="Texture2D" uid="uid://wlqj2lx5vptl" path="res://Assets/icicle_0.png" id="1_mgegr"]
+[ext_resource type="PackedScene" uid="uid://txf8kjwl5esb" path="res://Scenes/FSMS/ShotAnimStateMachine.tscn" id="3_blb6c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2or4k"]
-radius = 26.0
+radius = 33.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1cqr2"]
 atlas = ExtResource("1_mgegr")
@@ -497,6 +499,9 @@ animations = [{
 }]
 
 [node name="IceShot" type="Area2D"]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_hamrq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 2)
@@ -505,4 +510,9 @@ shape = SubResource("CircleShape2D_2or4k")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_5icky")
-animation = &"Shot_W"
+animation = &"Shot_NE"
+frame_progress = 0.124936
+
+[node name="AnimStateMachine" parent="." node_paths=PackedStringArray("sprite", "actor") instance=ExtResource("3_blb6c")]
+sprite = NodePath("../AnimatedSprite2D")
+actor = NodePath("..")

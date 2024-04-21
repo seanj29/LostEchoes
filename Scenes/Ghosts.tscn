@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5u1ux0sy1bwg"]
+[gd_scene load_steps=5 format=3 uid="uid://c5u1ux0sy1bwg"]
 
 [ext_resource type="SpriteFrames" uid="uid://brkufq8y6lv1e" path="res://Resources/PlayerAnims.tres" id="1_udyqo"]
 [ext_resource type="Script" path="res://Scripts/GhostScripts/ghost_movement.gd" id="1_vyjal"]
+[ext_resource type="PackedScene" uid="uid://bhntxqpi6vjbh" path="res://Scenes/FSMS/AnimMachineScene.tscn" id="3_a36rl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wp0l"]
 size = Vector2(16, 9)
@@ -18,3 +19,7 @@ animation = &"Walk_W"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 18.5)
 shape = SubResource("RectangleShape2D_7wp0l")
+
+[node name="AnimMachineScene" parent="." node_paths=PackedStringArray("sprite", "actor") instance=ExtResource("3_a36rl")]
+sprite = NodePath("../MainGhostAnim")
+actor = NodePath("..")

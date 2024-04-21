@@ -2,7 +2,7 @@ class_name IceShot
 extends Area2D
 
 @export var max_range := 200
-@export var BulletSpeed := 200
+@export var BulletSpeed := 250
 
 @onready var Owner: PawnMovement = get_parent()
 @onready var current_direction := Owner.current_direction

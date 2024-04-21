@@ -95,6 +95,8 @@ func attack_state() -> bool:
 	var attack_state_var = calc_attack_state(ActionsState)
 	if attack_state_var:
 		attack_pressed.emit()
+		var ice_shot := ice_shot_scene.instantiate()
+		add_child(ice_shot)
 		return true
 	else:
 		return false

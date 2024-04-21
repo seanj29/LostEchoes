@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 @onready var Level := get_node("/root/Level")
 
+@export var ice_shot_scene: PackedScene 
 @export var SPEED = 250.0
 
 ## Emitted when the direction changes

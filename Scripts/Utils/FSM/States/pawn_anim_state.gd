@@ -2,7 +2,6 @@ class_name PawnAnimState
 extends AnimState
 
 
-
 var is_attacking: bool
 
 func Enter():

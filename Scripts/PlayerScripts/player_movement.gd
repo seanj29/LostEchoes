@@ -4,7 +4,6 @@ extends PawnMovement
 
 
 @export var CurrentReplayResource: ReplayGhost
-@export var ice_shot_scene: PackedScene 
 
 
 var ActionArray: Array[String] = ["Up", "Down", "Left", "Right", "Attack"]

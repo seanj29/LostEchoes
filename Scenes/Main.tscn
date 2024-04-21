@@ -21,7 +21,9 @@ ice_shot_scene = ExtResource("6_0f2t0")
 
 [node name="Ghost_1" parent="." instance=ExtResource("3_a4wib")]
 position = Vector2(422, 249)
+ice_shot_scene = ExtResource("6_0f2t0")
 
 [node name="Ghost_2" parent="." instance=ExtResource("3_a4wib")]
 position = Vector2(422, 249)
 GhostID = 2
+ice_shot_scene = ExtResource("6_0f2t0")

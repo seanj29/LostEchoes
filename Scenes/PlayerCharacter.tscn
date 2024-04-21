@@ -1,11 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ytlk7kin8xrn"]
+[gd_scene load_steps=6 format=3 uid="uid://ytlk7kin8xrn"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerScripts/player_movement.gd" id="1_p628c"]
 [ext_resource type="Resource" uid="uid://dn3wfxt11ajx3" path="res://Resources/ReplayTemplate.tres" id="2_mqgb5"]
 [ext_resource type="SpriteFrames" uid="uid://brkufq8y6lv1e" path="res://Resources/PlayerAnims.tres" id="3_u33lu"]
-[ext_resource type="Script" path="res://Scripts/Utils/FSM/state_machine.gd" id="4_rnvep"]
-[ext_resource type="Script" path="res://Scripts/Utils/FSM/States/idle_anim_state.gd" id="5_r8n8s"]
-[ext_resource type="Script" path="res://Scripts/Utils/FSM/States/walk_anim_state.gd" id="6_vk6hm"]
+[ext_resource type="PackedScene" uid="uid://bhntxqpi6vjbh" path="res://Scenes/FSMS/AnimMachineScene.tscn" id="4_jii2y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xw2p"]
 size = Vector2(16, 9)
@@ -18,7 +16,7 @@ CurrentReplayResource = ExtResource("2_mqgb5")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("3_u33lu")
-animation = &"Idle_E"
+animation = &"Attack_NE"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 18.5)
@@ -26,16 +24,6 @@ shape = SubResource("RectangleShape2D_3xw2p")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
-script = ExtResource("4_rnvep")
-current_state = NodePath("IdleAnimState")
-
-[node name="IdleAnimState" type="Node" parent="StateMachine" node_paths=PackedStringArray("sprite", "actor")]
-script = ExtResource("5_r8n8s")
-sprite = NodePath("../../Sprite")
-actor = NodePath("../..")
-
-[node name="WalkAnimState" type="Node" parent="StateMachine" node_paths=PackedStringArray("sprite", "actor")]
-script = ExtResource("6_vk6hm")
-sprite = NodePath("../../Sprite")
-actor = NodePath("../..")
+[node name="AnimMachineScene" parent="." node_paths=PackedStringArray("sprite", "actor") instance=ExtResource("4_jii2y")]
+sprite = NodePath("../Sprite")
+actor = NodePath("..")

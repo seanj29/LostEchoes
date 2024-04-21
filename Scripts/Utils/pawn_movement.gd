@@ -15,7 +15,10 @@ var VectorSW := (Vector2.DOWN + Vector2.LEFT).normalized()
 ## Emitted when the direction changes
 signal direction_changed(direction: Type.Direction)
 
+## Emitted when the pawn attacks
+signal attack_pressed
 
+var is_attacking: bool = false
 ## The current direction the sprite is facing. [br]
 ## if it it is given a default, then the Sprite will start in that direction.
 var current_direction: Type.Direction

@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhntxqpi6vjbh"]
+
+[ext_resource type="Script" path="res://Scripts/Utils/FSM/State Machines/anim_state_machine.gd" id="1_mi5un"]
+[ext_resource type="Script" path="res://Scripts/Utils/FSM/States/walk_anim_state.gd" id="2_h82en"]
+[ext_resource type="Script" path="res://Scripts/Utils/FSM/States/idle_anim_state.gd" id="3_8o3to"]
+[ext_resource type="Script" path="res://Scripts/Utils/FSM/States/attack_anim_state.gd" id="4_4m4ip"]
+
+[node name="AnimMachineScene" type="Node" node_paths=PackedStringArray("current_state")]
+script = ExtResource("1_mi5un")
+current_state = NodePath("IdleAnimState")
+
+[node name="WalkAnimState" type="Node" parent="."]
+script = ExtResource("2_h82en")
+
+[node name="IdleAnimState" type="Node" parent="."]
+script = ExtResource("3_8o3to")
+
+[node name="AttackAnimState" type="Node" parent="."]
+script = ExtResource("4_4m4ip")

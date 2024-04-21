@@ -20,7 +20,7 @@ func _ready():
 	var LoadedReplay: ReplayGhost = Level.load_ghost_by_id(GhostID)
 	if LoadedReplay:
 		ReplayDict = LoadedReplay.Replay
-		print("GhostMovement.gd for Ghost Id %d says : resource loaded" % GhostID)
+		print("GhostMovement.gd for Ghost Id %d says: resource loaded" % GhostID)
 	else:
 		print("GhostMovement.gd for Ghost Id %d says: No Resource found" % GhostID)
 

@@ -17,6 +17,9 @@ func _ready():
 
 func _physics_process(_delta):
 
+	if Input.is_action_just_pressed("Attack"):
+		is_attacking = true
+				
 	var direction = Input.get_vector("Left", "Right", "Up", "Down")
 
 	if direction:

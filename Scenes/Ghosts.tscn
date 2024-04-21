@@ -1,10 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5u1ux0sy1bwg"]
+[gd_scene load_steps=5 format=3 uid="uid://c5u1ux0sy1bwg"]
 
 [ext_resource type="SpriteFrames" uid="uid://brkufq8y6lv1e" path="res://Resources/PlayerAnims.tres" id="1_udyqo"]
 [ext_resource type="Script" path="res://Scripts/GhostScripts/ghost_movement.gd" id="1_vyjal"]
-[ext_resource type="Script" path="res://Scripts/Utils/FSM/state_machine.gd" id="3_sitvt"]
-[ext_resource type="Script" path="res://Scripts/Utils/FSM/States/idle_anim_state.gd" id="4_cgyix"]
-[ext_resource type="Script" path="res://Scripts/Utils/FSM/States/walk_anim_state.gd" id="5_i78ch"]
+[ext_resource type="PackedScene" uid="uid://bhntxqpi6vjbh" path="res://Scenes/FSMS/AnimMachineScene.tscn" id="3_a36rl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wp0l"]
 size = Vector2(16, 9)
@@ -22,16 +20,6 @@ animation = &"Walk_W"
 position = Vector2(0, 18.5)
 shape = SubResource("RectangleShape2D_7wp0l")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
-script = ExtResource("3_sitvt")
-current_state = NodePath("IdleAnimState")
-
-[node name="IdleAnimState" type="Node" parent="StateMachine" node_paths=PackedStringArray("sprite", "actor")]
-script = ExtResource("4_cgyix")
-sprite = NodePath("../../MainGhostAnim")
-actor = NodePath("../..")
-
-[node name="WalkAnimState" type="Node" parent="StateMachine" node_paths=PackedStringArray("sprite", "actor")]
-script = ExtResource("5_i78ch")
-sprite = NodePath("../../MainGhostAnim")
-actor = NodePath("../..")
+[node name="AnimMachineScene" parent="." node_paths=PackedStringArray("sprite", "actor") instance=ExtResource("3_a36rl")]
+sprite = NodePath("../MainGhostAnim")
+actor = NodePath("..")

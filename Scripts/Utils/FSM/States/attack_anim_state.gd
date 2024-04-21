@@ -2,9 +2,12 @@ class_name AttackAnimState
 extends AnimState
 
 func Enter():
-	super()
-	if not sprite.animation_finished.is_connected(change):
-		sprite.animation_finished.connect(change)
+	if sprite.animation.begins_with("Attack"):
+		if not sprite.animation_finished.is_connected(change):
+			sprite.animation_finished.connect(change)
+	else:
+		if sprite.animation_finished.is_connected(change):
+			sprite.animation_finished.disconnect(change)
 
 
 func Physics_update(_delta):

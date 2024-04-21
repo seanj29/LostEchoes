@@ -4,7 +4,8 @@ extends AnimState
 
 func Enter():
 	super()
-	if sprite.animation.begins_with("Attack"):
+	
+	if sprite.animation.begins_with(anim_name):
 		if not sprite.animation_finished.is_connected(change):
 			sprite.animation_finished.connect(change)
 	else:
@@ -13,10 +14,6 @@ func Enter():
 	
 	actor.SPEED = 100 
 	
-
-func Physics_update(_delta):
-	super(_delta)
-	play_anim()
 	
 
 func Exit():

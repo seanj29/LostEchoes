@@ -5,20 +5,21 @@ extends State
 @onready var sprite: AnimatedSprite2D = parent.sprite
 @onready var actor: PawnMovement = parent.actor
 @onready var facing: Type.Direction = actor.current_direction
-@onready var anim_name = name.trim_suffix("AnimState")
+@onready var anim_name := name.trim_suffix("AnimState")
 
 var is_attacking: bool
 
 
 func Enter():
-
 	if not actor.direction_changed.is_connected(change_direction):
 		actor.direction_changed.connect(change_direction)
+
 	play_anim()
 
 
 func Physics_update(_delta):
 	is_attacking = actor.is_attacking
+	play_anim()
 
 
 ## Plays the relevant animation based on the current direction of the Sprite

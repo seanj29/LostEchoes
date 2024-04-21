@@ -1,9 +1,9 @@
 class_name IdleAnimState
-extends AnimState
+extends PawnAnimState
 
 
 func Physics_update(_delta):
-	
+
 	super(_delta)
 
 	if not actor.velocity.is_zero_approx():

@@ -37,10 +37,7 @@ func _physics_process(_delta):
 				if Action is String:
 					parseAction(Action)
 
-		
-	var direction = calc_direction_vector(ActionsState)
-
-	super(direction)
+	super(_delta)
 
 ## Fuction that parses the Actions in the [member ReplayDict].[br] 
 ## Parses a string action and changes the global [member ActionsState] dict accordingly. 
@@ -82,3 +79,17 @@ func calc_direction_vector(StateDict: Dictionary) -> Vector2:
 		current_direction_vector.x += 1
 	
 	return current_direction_vector.normalized()
+
+func calc_attack_state(StateDict: Dictionary) -> bool:
+	if StateDict.Attack_pressed:
+		return true
+	else:
+		return false
+
+
+func direction_state() -> Vector2:
+	return calc_direction_vector(ActionsState)
+
+
+func attack_state() -> void:
+	is_attacking = calc_attack_state(ActionsState)

@@ -25,8 +25,10 @@ var current_direction: Type.Direction
 
 var ReplayDict: Dictionary
 
-func _physics_process(direction):
+func _physics_process(_delta):
 
+	attack_state()
+	var direction := direction_state()
 	if direction:
 		velocity = direction * SPEED
 		calc_direction(direction)
@@ -59,3 +61,13 @@ func calc_direction(dir: Vector2):
 			current_direction = Type.Direction.SW
 	
 	direction_changed.emit(current_direction)
+
+
+## Ovverridable fuction to calc the [member direction] variable of the pawn class. Should be Normalized Vector of length 1
+func direction_state() -> Vector2:
+	return Vector2.ZERO
+
+
+## Ovverridable fuction to change the [member is_attacking] variable of the pawn class.
+func attack_state():
+	pass

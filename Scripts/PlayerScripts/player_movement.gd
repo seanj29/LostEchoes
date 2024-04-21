@@ -12,21 +12,7 @@ var ActionArray: Array[String] = ["Up", "Down", "Left", "Right", "Attack"]
 func _ready():
 
 	ReplayDict = CurrentReplayResource.Replay
-
-
-
-func _physics_process(_delta):
-
-	if Input.is_action_just_pressed("Attack"):
-		is_attacking = true
-	else:
-		is_attacking = false
-				
-	var direction = Input.get_vector("Left", "Right", "Up", "Down")
 	
-	super(direction)
-	
-
 
 func _unhandled_key_input(event: InputEvent):
 	
@@ -68,4 +54,14 @@ func record_input(event: InputEvent):
 	return
 
 
+func direction_state() -> Vector2:
+	return Input.get_vector("Left", "Right", "Up", "Down")
+
+
+func attack_state() -> void:
+
+	if Input.is_action_just_pressed("Attack"):
+		is_attacking = true
+	else:
+		is_attacking = false
 

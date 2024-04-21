@@ -25,6 +25,16 @@ var current_direction: Type.Direction
 
 var ReplayDict: Dictionary
 
+func _physics_process(direction):
+
+	if direction:
+		velocity = direction * SPEED
+		calc_direction(direction)
+	else:
+		velocity = Vector2.ZERO
+
+
+	move_and_slide()
 
 ## This function calculates the direction, based on [param dir], which is usually called during the [method play_walk] function.
 func calc_direction(dir: Vector2):

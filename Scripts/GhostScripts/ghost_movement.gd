@@ -39,15 +39,8 @@ func _physics_process(_delta):
 
 		
 	var direction = calc_direction_vector(ActionsState)
-	# SpriteScript.anim_picker(direction)
 
-	if direction:
-		velocity = direction * SPEED
-		super.calc_direction(direction)
-	else:
-		velocity = Vector2.ZERO
-
-	move_and_slide()
+	super(direction)
 
 ## Fuction that parses the Actions in the [member ReplayDict].[br] 
 ## Parses a string action and changes the global [member ActionsState] dict accordingly. 

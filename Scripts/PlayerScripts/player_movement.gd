@@ -23,15 +23,9 @@ func _physics_process(_delta):
 		is_attacking = false
 				
 	var direction = Input.get_vector("Left", "Right", "Up", "Down")
-
-	if direction:
-		velocity = direction * SPEED
-		super.calc_direction(direction)
-	else:
-		velocity = Vector2.ZERO
-
-
-	move_and_slide()
+	
+	super(direction)
+	
 
 
 func _unhandled_key_input(event: InputEvent):

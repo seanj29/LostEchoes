@@ -91,5 +91,12 @@ func direction_state() -> Vector2:
 	return calc_direction_vector(ActionsState)
 
 
-func attack_state() -> void:
-	is_attacking = calc_attack_state(ActionsState)
+func attack_state() -> bool:
+	var attack_state_var = calc_attack_state(ActionsState)
+	if attack_state_var:
+		attack_pressed.emit()
+		return true
+	else:
+		return false
+
+

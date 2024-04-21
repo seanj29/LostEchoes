@@ -26,8 +26,7 @@ var current_direction: Type.Direction
 var ReplayDict: Dictionary
 
 func _physics_process(_delta):
-
-	attack_state()
+	is_attacking = attack_state()
 	var direction := direction_state()
 	if direction:
 		velocity = direction * SPEED
@@ -69,5 +68,6 @@ func direction_state() -> Vector2:
 
 
 ## Ovverridable fuction to change the [member is_attacking] variable of the pawn class.
-func attack_state():
-	pass
+func attack_state() -> bool:
+	return false
+	

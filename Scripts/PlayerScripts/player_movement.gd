@@ -58,10 +58,10 @@ func direction_state() -> Vector2:
 	return Input.get_vector("Left", "Right", "Up", "Down")
 
 
-func attack_state() -> void:
-
+func attack_state() -> bool:
 	if Input.is_action_just_pressed("Attack"):
-		is_attacking = true
+		attack_pressed.emit()
+		return true
 	else:
-		is_attacking = false
+		return false
 

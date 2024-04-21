@@ -1,25 +1,29 @@
 [gd_scene load_steps=6 format=3 uid="uid://ytlk7kin8xrn"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="2_0lkm0"]
+[ext_resource type="Script" path="res://Scripts/PlayerScripts/player_movement.gd" id="1_p628c"]
 [ext_resource type="Resource" uid="uid://dn3wfxt11ajx3" path="res://Resources/ReplayTemplate.tres" id="2_mqgb5"]
 [ext_resource type="SpriteFrames" uid="uid://brkufq8y6lv1e" path="res://Resources/PlayerAnims.tres" id="3_u33lu"]
-[ext_resource type="Script" path="res://Scripts/PlayerAnims.gd" id="4_3xseh"]
+[ext_resource type="PackedScene" uid="uid://bhntxqpi6vjbh" path="res://Scenes/FSMS/PawnAnimMachineScene.tscn" id="4_em2tl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xw2p"]
 size = Vector2(16, 9)
 
 [node name="PlayerChar" type="CharacterBody2D"]
 collision_layer = 2
-script = ExtResource("2_0lkm0")
+collision_mask = 3
+script = ExtResource("1_p628c")
 CurrentReplayResource = ExtResource("2_mqgb5")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("3_u33lu")
-animation = &"Walk_SW"
-script = ExtResource("4_3xseh")
+animation = &"Idle_S"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 18.5)
 shape = SubResource("RectangleShape2D_3xw2p")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AnimMachineScene" parent="." node_paths=PackedStringArray("sprite", "actor") instance=ExtResource("4_em2tl")]
+sprite = NodePath("../Sprite")
+actor = NodePath("..")

@@ -7,10 +7,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wp0l"]
 size = Vector2(16, 9)
 
-[node name="GhostBody" type="CharacterBody2D" groups=["pawns"]]
+[node name="GhostBody" type="CharacterBody2D" node_paths=PackedStringArray("AttackTimer") groups=["pawns"]]
 y_sort_enabled = true
 collision_layer = 4
 script = ExtResource("1_tga6d")
+AttackTimer = NodePath("Timer")
 
 [node name="MainGhostAnim" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.85098, 1, 1, 0.752941)
@@ -24,3 +25,7 @@ shape = SubResource("RectangleShape2D_7wp0l")
 [node name="AnimMachineScene" parent="." node_paths=PackedStringArray("sprite", "actor") instance=ExtResource("3_a36rl")]
 sprite = NodePath("../MainGhostAnim")
 actor = NodePath("..")
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true

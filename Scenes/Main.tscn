@@ -23,4 +23,5 @@ position = Vector2(422, 249)
 position = Vector2(422, 249)
 GhostID = 2
 
-[node name="IceShotSpawner" parent="." instance=ExtResource("6_1vdh3")]
+[node name="IceShotSpawner" parent="." node_paths=PackedStringArray("Root") instance=ExtResource("6_1vdh3")]
+Root = NodePath("..")

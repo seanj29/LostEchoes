@@ -94,8 +94,12 @@ func direction_state() -> Vector2:
 func attack_state() -> bool:
 	var attack_state_var = calc_attack_state(ActionsState)
 	if attack_state_var:
-		attack_pressed.emit(self, global_position, current_direction)
-		return true
+		if AttackTimer.is_stopped():
+			AttackTimer.start()
+			attack_pressed.emit(self, global_position, current_direction)
+			return true
+		else:
+			return false
 	else:
 		return false
 

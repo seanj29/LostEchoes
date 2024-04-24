@@ -1,7 +1,7 @@
 extends Node
 
 @export var IceScene: PackedScene
-
+@export var Root: Node
 @onready var pawns := get_tree().get_nodes_in_group("pawns")
 
 
@@ -14,6 +14,6 @@ func _ready():
 func _spawn_shot(who: PawnInput, pos: Vector2, dir: Type.Direction) :
 	var ice_shot := IceScene.instantiate()
 	ice_shot.Owner = who
-	ice_shot.global_position = pos
+	ice_shot.position = pos
 	ice_shot.current_direction = dir
-	add_child(ice_shot)
+	Root.add_child(ice_shot)

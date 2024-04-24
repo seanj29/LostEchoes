@@ -6,6 +6,8 @@ extends CharacterBody2D
 @onready var Level := get_node("/root/Level")
 
 @export var SPEED = 250.0
+@export var AttackTimer: Timer
+
 
 ## Emitted when the direction changes
 signal direction_changed(direction: Type.Direction)

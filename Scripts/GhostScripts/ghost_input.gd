@@ -1,6 +1,6 @@
-class_name GhostMovement
+class_name GhostInput
 
-extends PawnMovement
+extends PawnInput
 
 ## Handles movement for the ghost, and makes sure it collides properly with walls.
 
@@ -20,9 +20,9 @@ func _ready():
 	var LoadedReplay: ReplayGhost = Level.load_ghost_by_id(GhostID)
 	if LoadedReplay:
 		ReplayDict = LoadedReplay.Replay
-		print("GhostMovement.gd for Ghost Id %d says: resource loaded" % GhostID)
+		print("GhostInput.gd for Ghost Id %d says: resource loaded" % GhostID)
 	else:
-		print("GhostMovement.gd for Ghost Id %d says: No Resource found" % GhostID)
+		print("GhostInput.gd for Ghost Id %d says: No Resource found" % GhostID)
 
 
 func _physics_process(_delta):
@@ -94,9 +94,7 @@ func direction_state() -> Vector2:
 func attack_state() -> bool:
 	var attack_state_var = calc_attack_state(ActionsState)
 	if attack_state_var:
-		attack_pressed.emit()
-		var ice_shot := ice_shot_scene.instantiate()
-		add_child(ice_shot)
+		attack_pressed.emit(self, global_position, current_direction)
 		return true
 	else:
 		return false

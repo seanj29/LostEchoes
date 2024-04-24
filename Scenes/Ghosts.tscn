@@ -1,15 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://c5u1ux0sy1bwg"]
 
+[ext_resource type="Script" path="res://Scripts/GhostScripts/ghost_input.gd" id="1_tga6d"]
 [ext_resource type="SpriteFrames" uid="uid://brkufq8y6lv1e" path="res://Resources/PlayerAnims.tres" id="1_udyqo"]
-[ext_resource type="Script" path="res://Scripts/GhostScripts/ghost_movement.gd" id="1_vyjal"]
 [ext_resource type="PackedScene" uid="uid://bhntxqpi6vjbh" path="res://Scenes/FSMS/PawnAnimMachineScene.tscn" id="3_a36rl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wp0l"]
 size = Vector2(16, 9)
 
-[node name="GhostBody" type="CharacterBody2D"]
+[node name="GhostBody" type="CharacterBody2D" groups=["pawns"]]
+y_sort_enabled = true
 collision_layer = 4
-script = ExtResource("1_vyjal")
+script = ExtResource("1_tga6d")
 
 [node name="MainGhostAnim" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.85098, 1, 1, 0.752941)

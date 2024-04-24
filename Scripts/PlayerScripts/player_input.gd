@@ -1,6 +1,6 @@
-class_name PlayerMovement
+class_name PlayerInput
 
-extends PawnMovement
+extends PawnInput
 
 
 @export var CurrentReplayResource: ReplayGhost
@@ -59,9 +59,7 @@ func direction_state() -> Vector2:
 
 func attack_state() -> bool:
 	if Input.is_action_just_pressed("Attack"):
-		attack_pressed.emit()
-		var ice_shot := ice_shot_scene.instantiate()
-		add_child(ice_shot)
+		attack_pressed.emit(self, global_position, current_direction)
 		return true
 	else:
 		return false

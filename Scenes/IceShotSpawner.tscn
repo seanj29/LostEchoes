@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0xfavp1c8ort"]
+
+[ext_resource type="Script" path="res://Scripts/MagicScripts/ice_shot_spawner.gd" id="1_nk3hx"]
+[ext_resource type="PackedScene" uid="uid://dr11li6mau3yg" path="res://Scenes/IceShot.tscn" id="2_c7s7m"]
+
+[node name="IceShotSpawner" type="Node"]
+script = ExtResource("1_nk3hx")
+IceScene = ExtResource("2_c7s7m")

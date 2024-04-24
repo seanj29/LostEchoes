@@ -1,18 +1,18 @@
-class_name PawnMovement
+class_name PawnInput
 
 extends CharacterBody2D
 
 
 @onready var Level := get_node("/root/Level")
 
-@export var ice_shot_scene: PackedScene 
 @export var SPEED = 250.0
 
 ## Emitted when the direction changes
 signal direction_changed(direction: Type.Direction)
 
 ## Emitted when the pawn attacks
-signal attack_pressed
+#TODO: make this signal send out the pawn location and direction, and make a magic spawner instead of tying it to the scene.
+signal attack_pressed(who: PawnInput, pos: Vector2, dir: Type.Direction)
 
 var is_attacking: bool
 ## The current direction the sprite is facing. [br]

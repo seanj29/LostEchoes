@@ -13,7 +13,6 @@ extends CharacterBody2D
 signal direction_changed(direction: Type.Direction)
 
 ## Emitted when the pawn attacks
-#TODO: make this signal send out the pawn location and direction, and make a magic spawner instead of tying it to the scene.
 signal attack_pressed(who: PawnInput, pos: Vector2, dir: Type.Direction)
 
 var is_attacking: bool

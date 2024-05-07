@@ -12,7 +12,7 @@ extends PawnInput
 var currentFrame: int = 0
 
 ## This dict stores the curent state of the various buttons
-# TODO Replace the ActionsState with a bitflag instead of a dict? maybe
+# TODO #5 Replace the ActionsState with a bitflag instead of a dict? maybe
 var ActionsState := {Up_pressed = false, Down_pressed = false, Left_pressed = false, Right_pressed = false, Attack_pressed = false}
 
 

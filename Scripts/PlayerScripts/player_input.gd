@@ -29,7 +29,10 @@ func record_input(event: InputEvent):
 	if event.is_action_pressed("Attack"):
 		if not AttackTimer.is_stopped():
 			return
-	
+
+	if event.is_action_pressed("Teleport"):
+		if not TeleportTimer.is_stopped():
+			return
 
 	var Frame := Engine.get_physics_frames()
 
@@ -77,6 +80,10 @@ func attack_state() -> bool:
 
 func teleport_state() -> bool:
 	if Input.is_action_just_pressed("Teleport"):
-		return true
+		if TeleportTimer.is_stopped():
+			TeleportTimer.start()
+			return true
+		else:
+			return false
 	else:
 		return false

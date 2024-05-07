@@ -7,11 +7,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wp0l"]
 size = Vector2(16, 9)
 
-[node name="GhostBody" type="CharacterBody2D" node_paths=PackedStringArray("AttackTimer") groups=["pawns"]]
+[node name="GhostBody" type="CharacterBody2D" node_paths=PackedStringArray("AttackTimer", "TeleportTimer") groups=["pawns"]]
 y_sort_enabled = true
 collision_layer = 4
 script = ExtResource("1_tga6d")
-AttackTimer = NodePath("Timer")
+AttackTimer = NodePath("AttackTimer")
+TeleportTimer = NodePath("TeleportTimer")
 
 [node name="MainGhostAnim" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.85098, 1, 1, 0.752941)
@@ -26,6 +27,11 @@ shape = SubResource("RectangleShape2D_7wp0l")
 sprite = NodePath("../MainGhostAnim")
 actor = NodePath("..")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="AttackTimer" type="Timer" parent="."]
 process_callback = 0
+one_shot = true
+
+[node name="TeleportTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.663
 one_shot = true

@@ -8,13 +8,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xw2p"]
 size = Vector2(16, 9)
 
-[node name="PlayerChar" type="CharacterBody2D" node_paths=PackedStringArray("AttackTimer") groups=["pawns"]]
+[node name="PlayerChar" type="CharacterBody2D" node_paths=PackedStringArray("AttackTimer", "TeleportTimer") groups=["pawns"]]
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_p628c")
 CurrentReplayResource = ExtResource("2_mqgb5")
-AttackTimer = NodePath("Timer")
+AttackTimer = NodePath("AttackTimer")
+TeleportTimer = NodePath("TeleportTimer")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("3_u33lu")
@@ -30,6 +31,10 @@ shape = SubResource("RectangleShape2D_3xw2p")
 sprite = NodePath("../Sprite")
 actor = NodePath("..")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="AttackTimer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
+[node name="TeleportTimer" type="Timer" parent="."]
 process_callback = 0
 one_shot = true

@@ -13,7 +13,7 @@ var currentFrame: int = 0
 
 ## This dict stores the curent state of the various buttons
 # TODO #5 Replace the ActionsState with a bitflag instead of a dict? maybe
-var ActionsState := {Up_pressed = false, Down_pressed = false, Left_pressed = false, Right_pressed = false, Attack_pressed = false}
+var ActionsState := {Up_pressed = false, Down_pressed = false, Left_pressed = false, Right_pressed = false, Attack_pressed = false, Teleport_pressed = false}
 
 
 func _ready():
@@ -63,6 +63,10 @@ func parseAction(Action: String):
 			ActionsState.Attack_pressed = true
 		"attack_released":
 			ActionsState.Attack_pressed = false
+		"teleport_pressed":
+			ActionsState.Teleport_pressed = true
+		"teleport_released":
+			ActionsState.Teleport_pressed = false
 		var anything_else:
 			printerr("%s has not been implemented yet!" % anything_else)
 	return
@@ -80,15 +84,16 @@ func calc_direction_vector(StateDict: Dictionary) -> Vector2:
 	
 	return current_direction_vector.normalized()
 
+
+func direction_state() -> Vector2:
+	return calc_direction_vector(ActionsState)
+
+
 func calc_attack_state(StateDict: Dictionary) -> bool:
 	if StateDict.Attack_pressed:
 		return true
 	else:
 		return false
-
-
-func direction_state() -> Vector2:
-	return calc_direction_vector(ActionsState)
 
 
 func attack_state() -> bool:
@@ -103,4 +108,21 @@ func attack_state() -> bool:
 	else:
 		return false
 
+func calc_teleport_state(StateDict: Dictionary) -> bool:
+	if StateDict.Teleport_pressed:
+		return true
+	else:
+		return false
+
+
+func teleport_state() -> bool:
+	var teleport_state_var = calc_teleport_state(ActionsState)
+	if teleport_state_var:
+		if TeleportTimer.is_stopped():
+			TeleportTimer.start()
+			return true
+		else:
+			return false
+	else:
+		return false
 

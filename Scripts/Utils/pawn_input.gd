@@ -6,8 +6,11 @@ extends CharacterBody2D
 @onready var Level := get_node("/root/Level")
 
 @export var SPEED = 250.0
-@export var AttackTimer: Timer
 @export var TeleportUnits = 150
+
+@export var AttackTimer: Timer
+@export var TeleportTimer: Timer
+
 
 ## Emitted when the direction changes
 signal direction_changed(direction: Type.Direction)
@@ -29,7 +32,6 @@ func _physics_process(_delta):
 	var direction := direction_state()
 	if is_teleport:
 		teleport_self(direction)
-		return
 	if direction:
 		velocity = direction * SPEED
 		calc_direction(direction)

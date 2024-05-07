@@ -5,7 +5,7 @@ extends PawnInput
 
 @export var CurrentReplayResource: ReplayGhost
 
-var ActionArray: Array[String] = ["Up", "Down", "Left", "Right", "Attack"]
+var ActionArray: Array[String] = ["Up", "Down", "Left", "Right", "Attack", "Teleport"]
 
 func _ready():
 
@@ -29,6 +29,7 @@ func record_input(event: InputEvent):
 	if event.is_action_pressed("Attack"):
 		if not AttackTimer.is_stopped():
 			return
+	
 
 	var Frame := Engine.get_physics_frames()
 
@@ -73,3 +74,9 @@ func attack_state() -> bool:
 	else:
 		return false
 
+
+func teleport_state() -> bool:
+	if Input.is_action_just_pressed("Teleport"):
+		return true
+	else:
+		return false

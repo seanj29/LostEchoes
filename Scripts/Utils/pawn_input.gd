@@ -7,7 +7,7 @@ extends CharacterBody2D
 
 @export var SPEED = 250.0
 @export var AttackTimer: Timer
-
+@export var TeleportUnits = 150
 
 ## Emitted when the direction changes
 signal direction_changed(direction: Type.Direction)
@@ -16,6 +16,7 @@ signal direction_changed(direction: Type.Direction)
 signal attack_pressed(who: PawnInput, pos: Vector2, dir: Type.Direction)
 
 var is_attacking: bool
+var is_teleport: bool
 ## The current direction the sprite is facing. [br]
 ## if it it is given a default, then the Sprite will start in that direction.
 var current_direction: Type.Direction
@@ -24,7 +25,11 @@ var ReplayDict: Dictionary
 
 func _physics_process(_delta):
 	is_attacking = attack_state()
+	is_teleport = teleport_state()
 	var direction := direction_state()
+	if is_teleport:
+		teleport_self(direction)
+		return
 	if direction:
 		velocity = direction * SPEED
 		calc_direction(direction)
@@ -34,8 +39,6 @@ func _physics_process(_delta):
 
 	move_and_slide()
 
-func _init():
-	print()
 
 ## This function calculates the direction, based on [param dir], which is usually called during the [method play_walk] function.
 func calc_direction(dir: Vector2):
@@ -53,3 +56,8 @@ func direction_state() -> Vector2:
 func attack_state() -> bool:
 	return false
 	
+func teleport_state() -> bool:
+	return false
+
+func teleport_self(dir: Vector2 = Vector2.UP) -> void:
+	global_position += (dir * TeleportUnits)

@@ -1,3 +1,5 @@
+@icon("res://Assets/Icons/ghost-svgrepo-com.svg")
+
 class_name GhostInput
 
 extends PawnInput

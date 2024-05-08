@@ -1,3 +1,4 @@
+@icon("res://Assets/Icons/wolf-4-svgrepo-com.svg")
 class_name WolfScript
 
 extends CharInput

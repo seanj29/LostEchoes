@@ -25,3 +25,6 @@ GhostID = 2
 
 [node name="IceShotSpawner" parent="." node_paths=PackedStringArray("Root") instance=ExtResource("6_1vdh3")]
 Root = NodePath("..")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(787, 463)

@@ -1,4 +1,4 @@
-class_name PawnInput
+class_name CharInput
 
 extends CharacterBody2D
 
@@ -6,10 +6,9 @@ extends CharacterBody2D
 @onready var Level := get_node("/root/Level")
 
 @export var SPEED = 250.0
-@export var TeleportUnits = 150
 
 @export var AttackTimer: Timer
-@export var TeleportTimer: Timer
+
 
 
 ## Emitted when the direction changes
@@ -19,18 +18,17 @@ signal direction_changed(direction: Type.Direction)
 signal attack_pressed(who: PawnInput, pos: Vector2, dir: Type.Direction)
 
 var is_attacking: bool
-var is_teleport: bool
+
 ## The current direction the sprite is facing. [br]
 ## if it it is given a default, then the Sprite will start in that direction.
 var current_direction: Type.Direction
 
-var ReplayDict: Dictionary
+
 
 func _physics_process(_delta):
 	is_attacking = attack_state()
-	is_teleport = teleport_state()
 	var direction := direction_state()
-	if is_teleport:
+	if teleport_state() == true:
 		teleport_self(direction)
 	if direction:
 		velocity = direction * SPEED
@@ -61,5 +59,7 @@ func attack_state() -> bool:
 func teleport_state() -> bool:
 	return false
 
-func teleport_self(dir: Vector2 = Vector2.UP) -> void:
-	global_position += (dir * TeleportUnits)
+func teleport_self(_dir: Vector2 = Vector2.UP) -> void:
+	return
+
+

@@ -1,0 +1,165 @@
+[gd_scene load_steps=21 format=3 uid="uid://h30slfed1d4d"]
+
+[ext_resource type="Script" path="res://Scripts/PawnScripts/wolf_script.gd" id="1_uaxky"]
+[ext_resource type="Texture2D" uid="uid://s1k7y8a2mrqy" path="res://Assets/wolf-all.png" id="2_nxtkv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlixb"]
+atlas = ExtResource("2_nxtkv")
+region = Rect2(704, 960, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uswuw"]
+atlas = ExtResource("2_nxtkv")
+region = Rect2(768, 960, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80uve"]
+atlas = ExtResource("2_nxtkv")
+region = Rect2(832, 960, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_511lc"]
+atlas = ExtResource("2_nxtkv")
+region = Rect2(896, 960, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6b13h"]
+atlas = ExtResource("2_nxtkv")
+region = Rect2(704, 896, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wdoq"]
+atlas = ExtResource("2_nxtkv")
+region = Rect2(768, 896, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyts0"]
+atlas = ExtResource("2_nxtkv")
+region = Rect2(832, 896, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6k4o"]
+atlas = ExtResource("2_nxtkv")
+region = Rect2(896, 896, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0633e"]
+atlas = ExtResource("2_nxtkv")
+region = Rect2(704, 832, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trvyr"]
+atlas = ExtResource("2_nxtkv")
+region = Rect2(768, 832, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6dyj"]
+atlas = ExtResource("2_nxtkv")
+region = Rect2(832, 832, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_441gp"]
+atlas = ExtResource("2_nxtkv")
+region = Rect2(896, 832, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drt2l"]
+atlas = ExtResource("2_nxtkv")
+region = Rect2(704, 768, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opehw"]
+atlas = ExtResource("2_nxtkv")
+region = Rect2(768, 768, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3o0r"]
+atlas = ExtResource("2_nxtkv")
+region = Rect2(832, 768, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15rs0"]
+atlas = ExtResource("2_nxtkv")
+region = Rect2(896, 768, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ka8p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlixb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uswuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80uve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_511lc")
+}],
+"loop": true,
+"name": &"Idle_NE",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6b13h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wdoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyts0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6k4o")
+}],
+"loop": true,
+"name": &"Idle_NW",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0633e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trvyr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6dyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_441gp")
+}],
+"loop": true,
+"name": &"Idle_SE",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drt2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opehw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3o0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15rs0")
+}],
+"loop": true,
+"name": &"Idle_SW",
+"speed": 7.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4xxdp"]
+radius = 16.0
+height = 40.0
+
+[node name="WolfBody" type="CharacterBody2D" node_paths=PackedStringArray("AttackTimer")]
+script = ExtResource("1_uaxky")
+AttackTimer = NodePath("AttackTimer")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4ka8p")
+animation = &"Idle_NE"
+frame = 1
+frame_progress = 0.739069
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_4xxdp")
+
+[node name="AttackTimer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
+[node name="TeleportTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.663
+one_shot = true

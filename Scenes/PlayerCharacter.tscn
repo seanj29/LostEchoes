@@ -11,7 +11,7 @@ size = Vector2(16, 9)
 [node name="PlayerChar" type="CharacterBody2D" node_paths=PackedStringArray("TeleportTimer", "AttackTimer") groups=["pawns"]]
 y_sort_enabled = true
 collision_layer = 2
-collision_mask = 3
+collision_mask = 11
 script = ExtResource("1_p628c")
 CurrentReplayResource = ExtResource("2_mqgb5")
 TeleportTimer = NodePath("TeleportTimer")

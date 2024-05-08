@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddqo064yy0neb"]
+
+[ext_resource type="Script" path="res://Scripts/FSMs/State Machines/behaviour_state_machine.gd" id="1_kocdq"]
+[ext_resource type="Script" path="res://Scripts/FSMs/States/BehaviourStates/idle_be_state.gd" id="2_3gix4"]
+
+[node name="BehaviourStateMachine" type="Node" node_paths=PackedStringArray("current_state")]
+script = ExtResource("1_kocdq")
+current_state = NodePath("IdleBehaviourState")
+
+[node name="IdleBehaviourState" type="Node" parent="."]
+script = ExtResource("2_3gix4")

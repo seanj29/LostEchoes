@@ -4,8 +4,7 @@ extends Node
 @export var current_state: State
 var states: Dictionary = {}
 
-## Last element in the state array will be the most recent state, similar to a stack
-# var state_stack: Array[State]
+
 
 
 func _ready():
@@ -18,14 +17,16 @@ func _ready():
 		else:
 			push_warning("State machine contains child which is not a State")
 	# Start execution of the initial state
-	# state_stack.push_back(current_state)
 	current_state.Enter()
+
 
 func _process(delta):
 	current_state.Update(delta)
 
+
 func _physics_process(delta):
 	current_state.Physics_update(delta)
+
 
 func on_child_transitioned(new_state_name: StringName) -> void:
 	var new_state = states.get(new_state_name)

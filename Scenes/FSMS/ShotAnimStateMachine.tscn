@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://txf8kjwl5esb"]
 
-[ext_resource type="Script" path="res://Scripts/Anims/FSM/State Machines/anim_state_machine.gd" id="1_6ljte"]
-[ext_resource type="Script" path="res://Scripts/Anims/FSM/States/shot_anim_state.gd" id="2_awpjg"]
+[ext_resource type="Script" path="res://Scripts/FSMs/State Machines/anim_state_machine.gd" id="1_6ljte"]
+[ext_resource type="Script" path="res://Scripts/FSMs/States/AnimStates/shot_anim_state.gd" id="2_awpjg"]
 
 [node name="AnimStateMachine" type="Node" node_paths=PackedStringArray("current_state")]
 script = ExtResource("1_6ljte")

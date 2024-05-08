@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://h30slfed1d4d"]
+[gd_scene load_steps=22 format=3 uid="uid://h30slfed1d4d"]
 
 [ext_resource type="Script" path="res://Scripts/PawnScripts/wolf_script.gd" id="1_uaxky"]
 [ext_resource type="Texture2D" uid="uid://s1k7y8a2mrqy" path="res://Assets/wolf-all.png" id="2_nxtkv"]
+[ext_resource type="PackedScene" uid="uid://ddqo064yy0neb" path="res://Scenes/FSMS/BehaviourStateMachine.tscn" id="3_3wkot"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dlixb"]
 atlas = ExtResource("2_nxtkv")
@@ -165,3 +166,6 @@ one_shot = true
 process_callback = 0
 wait_time = 0.663
 one_shot = true
+
+[node name="BehaviourStateMachine" parent="." node_paths=PackedStringArray("actor") instance=ExtResource("3_3wkot")]
+actor = NodePath("..")

@@ -8,6 +8,8 @@ extends CharInput
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var home_pos := global_position
 
+@onready var nav: NavigationAgent2D = $NavigationAgent2D
+
 var target_pos: Vector2
 
 var target_reached := false
@@ -25,6 +27,8 @@ func _ready():
 func _physics_process(_delta):
 	super(_delta)
 	var distanceTo = global_position.distance_squared_to(target_pos)
+	nav.target_position = get_global_mouse_position()
+	nav.get_next_path_position()
 	if distanceTo < ReachedRadius:
 		target_reached = true
 		# TODO Make this into a state machine and emit the "Idle" State here

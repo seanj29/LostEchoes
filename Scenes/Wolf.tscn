@@ -169,3 +169,6 @@ one_shot = true
 
 [node name="BehaviourStateMachine" parent="." node_paths=PackedStringArray("actor") instance=ExtResource("3_3wkot")]
 actor = NodePath("..")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true

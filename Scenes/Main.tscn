@@ -30,5 +30,5 @@ Root = NodePath("..")
 
 [node name="WolfBody" parent="." instance=ExtResource("7_gfrg6")]
 y_sort_enabled = true
-position = Vector2(424, 173)
+position = Vector2(462, 224)
 SPEED = 75.0

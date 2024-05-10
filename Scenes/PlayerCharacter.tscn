@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ytlk7kin8xrn"]
+[gd_scene load_steps=7 format=3 uid="uid://ytlk7kin8xrn"]
 
 [ext_resource type="Script" path="res://Scripts/PawnScripts/player_input.gd" id="1_p628c"]
 [ext_resource type="Resource" uid="uid://dn3wfxt11ajx3" path="res://Resources/ReplayTemplate.tres" id="2_mqgb5"]
+[ext_resource type="Resource" uid="uid://bnsjuqd2gl6x" path="res://Resources/player_stat_template.tres" id="3_iargr"]
 [ext_resource type="SpriteFrames" uid="uid://brkufq8y6lv1e" path="res://Resources/PlayerAnims.tres" id="3_u33lu"]
 [ext_resource type="PackedScene" uid="uid://bhntxqpi6vjbh" path="res://Scenes/FSMS/PawnAnimMachineScene.tscn" id="4_em2tl"]
 
@@ -16,6 +17,7 @@ script = ExtResource("1_p628c")
 CurrentReplayResource = ExtResource("2_mqgb5")
 TeleportTimer = NodePath("TeleportTimer")
 AttackTimer = NodePath("AttackTimer")
+stats = ExtResource("3_iargr")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("3_u33lu")

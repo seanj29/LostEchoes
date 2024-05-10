@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5u1ux0sy1bwg"]
+[gd_scene load_steps=6 format=3 uid="uid://c5u1ux0sy1bwg"]
 
 [ext_resource type="Script" path="res://Scripts/PawnScripts/ghost_input.gd" id="1_tga6d"]
 [ext_resource type="SpriteFrames" uid="uid://brkufq8y6lv1e" path="res://Resources/PlayerAnims.tres" id="1_udyqo"]
+[ext_resource type="Resource" uid="uid://bnsjuqd2gl6x" path="res://Resources/player_stat_template.tres" id="2_epoqn"]
 [ext_resource type="PackedScene" uid="uid://bhntxqpi6vjbh" path="res://Scenes/FSMS/PawnAnimMachineScene.tscn" id="3_a36rl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wp0l"]
@@ -13,6 +14,7 @@ collision_layer = 4
 script = ExtResource("1_tga6d")
 TeleportTimer = NodePath("TeleportTimer")
 AttackTimer = NodePath("AttackTimer")
+stats = ExtResource("2_epoqn")
 
 [node name="MainGhostAnim" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.85098, 1, 1, 0.752941)

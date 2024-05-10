@@ -9,13 +9,15 @@ const FORWARDRATIO := 0.05
 
 @onready var Owner: PawnInput
 @onready var current_direction: Type.Direction
-
+@onready var attack_str: int = Owner.stats.attack
 signal direction_changed(direction: Type.Direction)
 var _travelled_distance = 0
 
 func _ready():
 	direction_changed.emit(current_direction)
 	position += Type.convertDirectiontoVector(current_direction) * BulletSpeed * FORWARDRATIO
+	if not body_entered.is_connected(whoCollided):
+		body_entered.connect(whoCollided)
 	
 
 func _physics_process(delta: float):
@@ -28,4 +30,16 @@ func _physics_process(delta: float):
 	if _travelled_distance > max_range:
 		queue_free()
 
+func whoCollided(body: Node2D) -> void:
+
+	if body is CharInput:
+		
+		if body == Owner:
+			return
+
+		body.attack_rec(Owner, attack_str)
+
+	else:
+		return
+	
 

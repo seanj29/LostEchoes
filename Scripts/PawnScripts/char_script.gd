@@ -4,12 +4,11 @@ extends CharacterBody2D
 
 
 @onready var Level := get_node("/root/Level")
-
 @export var SPEED = 250.0
 
 @export var AttackTimer: Timer
 
-
+@export var stats: StatSheet
 
 ## Emitted when the direction changes
 signal direction_changed(direction: Type.Direction)
@@ -17,12 +16,22 @@ signal direction_changed(direction: Type.Direction)
 ## Emitted when the pawn attacks
 signal attack_pressed(who: PawnInput, pos: Vector2, dir: Type.Direction)
 
+@onready var current_health = stats.max_health:
+	get:
+		return current_health
+	set(value):
+		if value > 0:
+			current_health = value
+		else:
+			current_health = 0
+			die()
+
+
 var is_attacking: bool
 
 ## The current direction the sprite is facing. [br]
 ## if it it is given a default, then the Sprite will start in that direction.
 var current_direction: Type.Direction
-
 
 
 func _physics_process(_delta):
@@ -62,4 +71,11 @@ func teleport_state() -> bool:
 func teleport_self(_dir: Vector2 = Vector2.UP) -> void:
 	return
 
+func attack_rec(attacker: CharInput, attack_strength: int) -> void:
+	current_health -= attack_strength
+	print("Attacked for %s damage by %s, new health is %s" % [attack_strength, attacker, current_health])
 
+
+func die():
+	print("ahh I diiieedd")
+	queue_free()

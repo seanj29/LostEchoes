@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="StatSheet" load_steps=2 format=3 uid="uid://bnsjuqd2gl6x"]
+
+[ext_resource type="Script" path="res://Scripts/Utils/stat_sheet.gd" id="1_7ghud"]
+
+[resource]
+script = ExtResource("1_7ghud")
+max_health = 20
+attack = 5

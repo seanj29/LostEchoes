@@ -8,7 +8,8 @@ extends Node
 func _ready():
 	for pawn in pawns:
 		if pawn is PawnInput:
-			pawn.attack_pressed.connect(_spawn_shot)
+			if not pawn.attack_pressed.is_connected(_spawn_shot):
+				pawn.attack_pressed.connect(_spawn_shot)
 
 
 func _spawn_shot(who: PawnInput, pos: Vector2, dir: Type.Direction) :

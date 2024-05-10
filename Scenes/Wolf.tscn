@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://h30slfed1d4d"]
+[gd_scene load_steps=23 format=3 uid="uid://h30slfed1d4d"]
 
 [ext_resource type="Script" path="res://Scripts/PawnScripts/wolf_script.gd" id="1_uaxky"]
+[ext_resource type="Resource" uid="uid://4d1l1v3qo4re" path="res://Resources/enemy_stat_template.tres" id="2_bs1jx"]
 [ext_resource type="Texture2D" uid="uid://s1k7y8a2mrqy" path="res://Assets/wolf-all.png" id="2_nxtkv"]
 [ext_resource type="PackedScene" uid="uid://ddqo064yy0neb" path="res://Scenes/FSMS/BehaviourStateMachine.tscn" id="3_3wkot"]
 
@@ -147,6 +148,7 @@ collision_layer = 8
 collision_mask = 15
 script = ExtResource("1_uaxky")
 AttackTimer = NodePath("AttackTimer")
+stats = ExtResource("2_bs1jx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4ka8p")
@@ -171,4 +173,3 @@ one_shot = true
 actor = NodePath("..")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true

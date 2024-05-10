@@ -10,6 +10,7 @@ var is_teleporting: bool
 
 var ReplayDict: Dictionary
 
+
 func _physics_process(_delta):
 	super(_delta)
 	var direction := direction_state()

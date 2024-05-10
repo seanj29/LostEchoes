@@ -12,7 +12,7 @@ extends CharInput
 
 
 @export var ReachedRadius := 20
-@export var RoamRadius := 100
+@export var RoamRadius := 80
 
 var dir: Vector2
 
@@ -25,7 +25,7 @@ func _ready():
 func randomPoint() -> Vector2:
 
 	var angle = randf_range(0, TAU)
-	var randomRadius = randf_range(5, RoamRadius)
+	var randomRadius = randf_range(30, RoamRadius)
 
 	var x = home_pos.x + randomRadius * cos(angle)
 	var y = home_pos.y + randomRadius * sin(angle)

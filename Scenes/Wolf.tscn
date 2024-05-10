@@ -145,7 +145,7 @@ size = Vector2(17, 9)
 
 [node name="WolfBody" type="CharacterBody2D" node_paths=PackedStringArray("AttackTimer")]
 collision_layer = 8
-collision_mask = 15
+collision_mask = 10
 script = ExtResource("1_uaxky")
 AttackTimer = NodePath("AttackTimer")
 stats = ExtResource("2_bs1jx")
@@ -173,3 +173,4 @@ one_shot = true
 actor = NodePath("..")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true

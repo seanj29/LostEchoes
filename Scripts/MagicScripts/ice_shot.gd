@@ -32,14 +32,12 @@ func _physics_process(delta: float):
 
 func whoCollided(body: Node2D) -> void:
 
-	if body is CharInput:
-		
-		if body == Owner:
-			return
+	if body is CharInput and not body == Owner:
 
 		body.attack_rec(Owner, attack_str)
-
-	else:
-		return
+		# Uncomment below to delete the projectile on hit
+		#queue_free()
+	
+	return
 	
 

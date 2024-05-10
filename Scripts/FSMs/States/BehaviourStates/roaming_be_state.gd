@@ -1,21 +1,29 @@
 class_name RoamingBehaviourState
 extends BehaviourState
 
+var nav: NavigationAgent2D
+var target_pos: Vector2
+var next_path_pos: Vector2
 
-## Logic to be executed when the machine enters this state
 func Enter() -> void:
 	super()
-	var nav :NavigationAgent2D = actor.nav
+	target_pos = actor.randomPoint()
+	nav = actor.nav
+	nav.target_position = target_pos
+
+	if not nav.navigation_finished.is_connected(change):
+		nav.navigation_finished.connect(change)
+
 	print("I'm roaming baby!!")
-	print(nav)
 
-## Logic to be executed when machine exits this state
-func Exit() -> void:
-	pass
 
-## Logic to be executed every frame
-func Update(_delta: float) -> void:
-	pass
-## Physics version of [method Update]
 func Physics_update(_delta: float) -> void:
-	pass
+	next_path_pos = nav.get_next_path_position()
+	if nav.is_navigation_finished():
+		change()
+	actor.dir = actor.global_position.direction_to(next_path_pos)
+	
+
+
+func change() -> void:
+	transitioned.emit("IdleBehaviourState")

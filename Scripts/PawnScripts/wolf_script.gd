@@ -12,20 +12,22 @@ extends CharInput
 
 
 @export var ReachedRadius := 20
-@export var RoamRadius := 80
+
+@export_category("RoamingProperties")
+@export var RoamMinRadius := 30
+@export var RoamMaxRadius := 80
 
 var dir: Vector2
 
 func _ready():
 
-	sprite.play("Idle_NE")
 	nav.target_desired_distance = ReachedRadius
 
 
 func randomPoint() -> Vector2:
 
 	var angle = randf_range(0, TAU)
-	var randomRadius = randf_range(30, RoamRadius)
+	var randomRadius = randf_range(RoamMinRadius, RoamMaxRadius)
 
 	var x = home_pos.x + randomRadius * cos(angle)
 	var y = home_pos.y + randomRadius * sin(angle)
@@ -33,7 +35,6 @@ func randomPoint() -> Vector2:
 	return Vector2(x, y)
 
 func direction_state() -> Vector2:
-		direction_changed.emit(dir)
 		return dir
 
 

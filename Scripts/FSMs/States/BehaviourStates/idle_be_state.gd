@@ -5,7 +5,6 @@ var actor_speed: float
 
 func Enter():
     super()
-    print("Uhh, bored I guess")
     actor_speed = actor.SPEED
     actor.SPEED = 0
     

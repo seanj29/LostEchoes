@@ -5,7 +5,7 @@ var nav: NavigationAgent2D
 var target_pos: Vector2
 var next_path_pos: Vector2
 var last_target: Vector2
-var MinimumVectorDistance: float = 50
+@export var MinimumVectorDistance: float = 50
 
 func Enter() -> void:
 	super()
@@ -15,7 +15,6 @@ func Enter() -> void:
 
 	target_pos = actor.randomPoint()
 	while last_target.distance_to(target_pos) < MinimumVectorDistance:
-		print(last_target.distance_to(target_pos))
 		target_pos = actor.randomPoint()
 
 	nav.target_position = target_pos
@@ -24,7 +23,6 @@ func Enter() -> void:
 	if not nav.navigation_finished.is_connected(change):
 		nav.navigation_finished.connect(change)
 
-	print("I'm roaming baby!!")
 
 
 func Physics_update(_delta: float) -> void:

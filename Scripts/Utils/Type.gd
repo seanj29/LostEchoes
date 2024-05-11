@@ -7,6 +7,7 @@ const VectorNW := (Vector2.UP + Vector2.LEFT) / sqrt(2)
 const VectorSE := (Vector2.DOWN + Vector2.RIGHT) / sqrt(2)
 const VectorSW := (Vector2.DOWN + Vector2.LEFT) / sqrt(2)
 
+const VectorArray: Array[Vector2] = [VectorNE, VectorNW, VectorSE, VectorSW, Vector2.UP, Vector2.RIGHT, Vector2.LEFT]
 
 static func convertVectorToDirection(dir: Vector2) -> Direction:
 	
@@ -29,8 +30,10 @@ static func convertVectorToDirection(dir: Vector2) -> Direction:
 			return Direction.S
 		VectorSW:
 			return Direction.SW
-		_:
+		Vector2.ZERO:
 			return Direction.NULL
+		var otherVector:
+			return clampVectorToDirection(otherVector)
 		
 	
 static func convertDirectiontoVector(dir: Direction) -> Vector2:
@@ -57,3 +60,10 @@ static func convertDirectiontoVector(dir: Direction) -> Vector2:
 		_:
 			return Vector2.ZERO
 
+
+static func clampVectorToDirection(vec: Vector2) -> Direction:
+		var outcomeDict: Dictionary = {}
+		for vector in VectorArray:
+			outcomeDict[vec.dot(vector)] = convertVectorToDirection(vector)
+		var highmatch: float = outcomeDict.keys().max()
+		return outcomeDict.get(highmatch, Direction.NULL)

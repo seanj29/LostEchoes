@@ -18,13 +18,13 @@ layer_1/tile_data = PackedInt32Array(2097161, 1, 4, 2031625, 1, 4, 1966089, 1, 4
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_gi58w")]
 z_index = 1
-position = Vector2(664, 227)
+position = Vector2(383, 264)
 
 [node name="Ghost_1" parent="." instance=ExtResource("3_a4wib")]
-position = Vector2(655, 251)
+position = Vector2(383, 263)
 
 [node name="Ghost_2" parent="." instance=ExtResource("3_a4wib")]
-position = Vector2(622, 274)
+position = Vector2(383, 264)
 GhostID = 2
 
 [node name="IceShotSpawner" parent="." node_paths=PackedStringArray("Root") instance=ExtResource("6_1vdh3")]
@@ -32,5 +32,5 @@ Root = NodePath("..")
 
 [node name="WolfBody" parent="." instance=ExtResource("7_gfrg6")]
 y_sort_enabled = true
-position = Vector2(462, 224)
+position = Vector2(464, 242)
 SPEED = 75.0

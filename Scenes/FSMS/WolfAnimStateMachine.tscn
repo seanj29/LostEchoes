@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://db2gkh1cg6hbv"]
+
+[ext_resource type="Script" path="res://Scripts/FSMs/State Machines/anim_state_machine.gd" id="1_df21m"]
+[ext_resource type="Script" path="res://Scripts/FSMs/States/AnimStates/wolf_idle_anim_state.gd" id="2_5nyeo"]
+[ext_resource type="Script" path="res://Scripts/FSMs/States/AnimStates/wolf_walk_anim_state.gd" id="3_nrgs8"]
+
+[node name="WolfAnimStateMachine" type="Node" node_paths=PackedStringArray("current_state")]
+script = ExtResource("1_df21m")
+current_state = NodePath("WolfIdleAnimState")
+
+[node name="WolfIdleAnimState" type="Node" parent="."]
+script = ExtResource("2_5nyeo")
+
+[node name="WolfWalkAnimState" type="Node" parent="."]
+script = ExtResource("3_nrgs8")

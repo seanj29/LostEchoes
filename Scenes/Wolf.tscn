@@ -416,3 +416,9 @@ actor = NodePath("..")
 [node name="AttackTimer" type="Timer" parent="."]
 process_callback = 0
 one_shot = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+collision_mask = 3
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false

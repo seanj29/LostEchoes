@@ -2,10 +2,10 @@ class_name WolfBaseAnimState
 extends PawnAnimState
 
 
-
 func Enter():
-	super()
 	anim_name = anim_name.trim_prefix("Wolf")
+	super()
+	
 
 
 ## Plays the relevant animation based on the current direction of the Sprite
@@ -22,11 +22,11 @@ func play_anim():
 		Type.Direction.SE:
 			sprite.play("%s_SE" % anim_name)
 		Type.Direction.W:
-			sprite.play("%s_SW" % anim_name)
+			sprite.play("%s_NW" % anim_name)
 		Type.Direction.NW:
 			sprite.play("%s_NW" % anim_name)
 		Type.Direction.S: 
-			sprite.play("%s_S" % anim_name)
+			sprite.play("%s_SW" % anim_name)
 		Type.Direction.SW:
 			sprite.play("%s_SW" % anim_name)
 		_: 

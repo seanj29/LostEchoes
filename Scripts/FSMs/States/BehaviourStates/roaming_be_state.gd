@@ -25,12 +25,16 @@ func Enter() -> void:
 
 
 
-func Physics_update(_delta: float) -> void:
+func Update(_delta: float) -> void:
+	super(_delta)
 	next_path_pos = nav.get_next_path_position()
+
 	if nav.is_navigation_finished():
 		change()
 	actor.dir = actor.global_position.direction_to(next_path_pos)
-	
+
+	if can_see_player:
+		transitioned.emit("ChasingBehaviourState")
 
 
 func change() -> void:

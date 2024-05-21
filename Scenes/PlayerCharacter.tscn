@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ytlk7kin8xrn"]
+[gd_scene load_steps=8 format=3 uid="uid://ytlk7kin8xrn"]
 
 [ext_resource type="Script" path="res://Scripts/PawnScripts/player_input.gd" id="1_p628c"]
 [ext_resource type="Resource" uid="uid://dn3wfxt11ajx3" path="res://Resources/ReplayTemplate.tres" id="2_mqgb5"]
@@ -8,6 +8,10 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3xw2p"]
 size = Vector2(16, 9)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jcn0l"]
+radius = 10.5
+height = 39.0
 
 [node name="PlayerChar" type="CharacterBody2D" node_paths=PackedStringArray("TeleportTimer", "AttackTimer") groups=["pawns"]]
 y_sort_enabled = true
@@ -44,3 +48,12 @@ one_shot = true
 [node name="TeleportTimer" type="Timer" parent="."]
 process_callback = 0
 one_shot = true
+
+[node name="PlayerHurtBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtBox"]
+position = Vector2(0, 6)
+shape = SubResource("CapsuleShape2D_jcn0l")
